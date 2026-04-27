@@ -804,3 +804,525 @@ body {
   /* Shrink belief text on mobile */
   .belief-text { font-size: 1.4rem; }
 }
+
+
+/* ============================================================
+   HOVER EFFECTS — Added for visual polish
+   Makes the site feel interactive and premium
+   ============================================================ */
+
+/* Noble Finances logo — slides slightly right and deepens color on hover */
+.navbar-logo {
+  transition: color 0.2s ease, transform 0.2s ease; /* Smooth transition */
+}
+.navbar-logo:hover {
+  color: var(--dark-green);        /* Deepens to dark green on hover */
+  transform: translateX(3px);      /* Slides slightly right */
+}
+
+/* Service cards — lift up with shadow on hover */
+.service-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* Smooth hover */
+}
+.service-card:hover {
+  transform: translateY(-6px);                          /* Lifts card upward */
+  box-shadow: 0 16px 48px rgba(45, 74, 62, 0.15);      /* Soft green shadow below */
+}
+
+/* Bookkeeping card — same lift effect */
+.bookkeeping-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.bookkeeping-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(45, 74, 62, 0.15);
+}
+
+/* Tag badges — subtle bg darken on hover */
+.tag {
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth */
+  cursor: default; /* Default cursor since tags aren't links */
+}
+.tag:hover {
+  background-color: var(--dark-green); /* Fills dark green */
+  color: var(--white);                 /* Text turns white */
+}
+
+/* Client items in testimonials — already have active state, add hover */
+.client-item:not(.active):hover {
+  background-color: var(--mint-light); /* Pale mint on hover */
+  cursor: pointer;                     /* Hand cursor */
+}
+
+/* Audience cards — lift on hover */
+.audience-card {
+  transition: transform 0.2s ease; /* Smooth */
+  cursor: default;
+}
+.audience-card:hover {
+  transform: translateY(-4px); /* Gentle lift */
+}
+
+/* Audience icon — scale up on hover */
+.audience-icon {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.audience-card:hover .audience-icon {
+  transform: scale(1.15);                  /* Enlarges the icon */
+  background-color: var(--dark-green);     /* Dark green background */
+  color: var(--white);                     /* White emoji */
+}
+
+/* Globe image — gentle float pulse on hover */
+.hero-globe {
+  transition: transform 0.3s ease;
+}
+.hero-globe:hover {
+  transform: scale(1.05) rotate(-3deg); /* Slight scale and tilt */
+}
+
+/* Card images — subtle zoom on hover */
+.card-img,
+.bookkeeping-img,
+.custom-plan-img {
+  transition: transform 0.3s ease; /* Smooth zoom */
+}
+.service-card:hover .card-img,
+.bookkeeping-card:hover .bookkeeping-img {
+  transform: scale(1.05); /* Zooms in slightly */
+}
+
+/* Custom plan card — lift on hover */
+.custom-plan-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.custom-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 56px rgba(0,0,0,0.2);
+}
+
+/* btn-white-pill — reverses colors on hover */
+.btn-white-pill:hover {
+  background-color: var(--mint-light); /* Pale mint */
+  color: var(--dark-green);            /* Dark green text */
+  opacity: 1;                          /* Override previous opacity rule */
+}
+
+/* Footer logo — same subtle hover as navbar logo */
+.footer-logo {
+  transition: opacity 0.2s ease;
+  cursor: default;
+}
+.footer-logo:hover {
+  opacity: 0.75; /* Slightly dims */
+}
+
+
+/* ============================================================
+   CONTACT MODAL STYLES
+   Shared modal base used for both contact and chatroom modals
+   ============================================================ */
+
+/* Full-screen dark overlay */
+.modal-overlay {
+  position: fixed;                        /* Fixed to viewport */
+  top: 0;                                 /* Covers from top */
+  left: 0;                                /* Covers from left */
+  width: 100%;                            /* Full width */
+  height: 100%;                           /* Full height */
+  background-color: rgba(30,51,41,0.65);  /* Semi-transparent dark green */
+  z-index: 1000;                          /* Above everything */
+  display: flex;                          /* Centers the modal box */
+  align-items: center;                    /* Vertically */
+  justify-content: center;                /* Horizontally */
+  opacity: 0;                             /* Invisible by default */
+  visibility: hidden;                     /* Non-interactive by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade */
+}
+
+/* When JS adds .open class — overlay becomes visible */
+.modal-overlay.open {
+  opacity: 1;          /* Fully visible */
+  visibility: visible; /* Interactive */
+}
+
+/* White modal box */
+.modal-box {
+  background-color: var(--white);           /* White */
+  border-radius: 20px;                      /* Rounded corners */
+  padding: 48px 52px;                       /* Generous inner spacing */
+  width: 100%;                              /* Responsive */
+  max-width: 500px;                         /* Max width */
+  position: relative;                       /* For close button */
+  box-shadow: 0 24px 80px rgba(0,0,0,0.2); /* Deep shadow */
+  transform: translateY(30px);              /* Starts below final position */
+  transition: transform 0.35s ease;        /* Slides up on open */
+}
+
+/* Slide up when overlay opens */
+.modal-overlay.open .modal-box {
+  transform: translateY(0); /* Final position */
+}
+
+/* × close button */
+.modal-close {
+  position: absolute;        /* Top right of modal */
+  top: 18px;                 /* From top */
+  right: 22px;               /* From right */
+  background: none;          /* No background */
+  border: none;              /* No border */
+  font-size: 1.4rem;         /* Large × */
+  color: var(--text-muted);  /* Grey */
+  cursor: pointer;           /* Hand cursor */
+  line-height: 1;            /* No extra height */
+  transition: color 0.2s, transform 0.2s; /* Smooth hover */
+}
+.modal-close:hover {
+  color: var(--dark-green); /* Dark green on hover */
+  transform: rotate(90deg); /* Rotates × on hover — classy touch */
+}
+
+/* Small label above modal heading */
+.modal-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+/* Modal heading */
+.modal-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+/* Modal subtitle */
+.modal-subtitle {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* Thin divider line */
+.modal-divider {
+  border: none;
+  border-top: 1px solid #e8f0eb;
+  margin-bottom: 24px;
+}
+
+/* Stacked contact detail rows */
+.modal-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Individual row: icon + text */
+.contact-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Mint circle icon */
+.contact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--mint-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.contact-detail-row:hover .contact-icon {
+  background-color: var(--dark-green); /* Fills dark green on row hover */
+  transform: scale(1.1);               /* Slight scale */
+}
+
+/* Label + value stacked */
+.contact-detail-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small uppercase label */
+.contact-label {
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contact value — link or text */
+.contact-value {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--dark-green);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.contact-value:hover {
+  opacity: 0.7; /* Dims on hover */
+  text-decoration: underline;
+}
+
+/* "Send us a message" form title */
+.modal-form-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  margin-bottom: 14px;
+}
+
+/* Form fields column */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Input and textarea shared styles */
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #d8ebe0;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  color: var(--dark-green);
+  background-color: #f8fcfa;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Highlight on focus */
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: var(--dark-green);
+  box-shadow: 0 0 0 3px rgba(45,74,62,0.08); /* Soft green focus ring */
+}
+
+/* Placeholder text */
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {
+  color: #9ab8a5;
+}
+
+/* Message textarea */
+.modal-form textarea {
+  height: 90px;
+  resize: none;
+}
+
+/* Submit button */
+.modal-submit {
+  background-color: var(--dark-green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.modal-submit:hover {
+  background-color: var(--darker-green);
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+
+/* ============================================================
+   CHATROOM MODAL STYLES
+   Wider modal with a chat interface — messages + input row
+   ============================================================ */
+
+/* Wider box for the chatroom */
+.chatroom-box {
+  max-width: 580px;  /* Wider than contact modal */
+  padding: 0;        /* No padding — header/messages/input handle their own */
+  overflow: hidden;  /* Clips content to rounded corners */
+}
+
+/* Dark green header bar at top of chatroom */
+.chatroom-header {
+  background-color: var(--dark-green); /* Dark green */
+  padding: 18px 24px;                  /* Inner spacing */
+  display: flex;                       /* Row layout */
+  align-items: center;                 /* Vertically centered */
+  justify-content: space-between;      /* Info left, close right */
+}
+
+/* Expert info: avatar + name + status */
+.chatroom-expert-info {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 12px;           /* Space between avatar and text */
+}
+
+/* Expert avatar circle */
+.chatroom-avatar {
+  width: 40px;                         /* Fixed size */
+  height: 40px;                        /* Equal — circle */
+  border-radius: 50%;                  /* Circle */
+  background-color: var(--mint);       /* Mint background */
+  display: flex;                       /* Centers emoji */
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;                   /* Emoji size */
+  flex-shrink: 0;                      /* Never shrinks */
+}
+
+/* Expert name */
+.chatroom-expert-name {
+  display: block;           /* Own line */
+  font-size: 0.88rem;       /* Small */
+  font-weight: 600;         /* Semi-bold */
+  color: var(--white);      /* White on dark green */
+}
+
+/* Online status indicator */
+.chatroom-status {
+  display: block;                    /* Own line */
+  font-size: 0.72rem;                /* Very small */
+  color: rgba(255,255,255,0.7);      /* Faded white */
+  margin-top: 2px;                   /* Tiny gap */
+}
+
+/* Close button in chatroom header */
+.chatroom-close {
+  color: rgba(255,255,255,0.8) !important; /* White — overrides modal-close grey */
+  font-size: 1.2rem;                       /* Slightly smaller */
+}
+.chatroom-close:hover {
+  color: var(--white) !important; /* Full white on hover */
+}
+
+/* Scrollable message area */
+.chatroom-messages {
+  height: 320px;               /* Fixed height — scrolls when full */
+  overflow-y: auto;            /* Vertical scroll when messages overflow */
+  padding: 24px 24px 16px;     /* Inner spacing */
+  background-color: #f7faf8;   /* Very light green-white */
+  display: flex;               /* Flex column — messages stack top to bottom */
+  flex-direction: column;
+  gap: 16px;                   /* Space between messages */
+}
+
+/* Custom scrollbar styling for the messages area */
+.chatroom-messages::-webkit-scrollbar {
+  width: 4px; /* Thin scrollbar */
+}
+.chatroom-messages::-webkit-scrollbar-thumb {
+  background-color: var(--mint); /* Mint scrollbar thumb */
+  border-radius: 4px;
+}
+
+/* Individual message wrapper */
+.chat-message {
+  display: flex;          /* Column — bubble above, timestamp below */
+  flex-direction: column;
+  gap: 4px;               /* Small gap between bubble and timestamp */
+}
+
+/* Expert messages align left, user messages align right */
+.expert-message {
+  align-items: flex-start; /* Left-aligned */
+}
+.user-message {
+  align-items: flex-end; /* Right-aligned */
+}
+
+/* Chat bubble shared styles */
+.chat-bubble {
+  padding: 12px 16px;  /* Inner spacing */
+  border-radius: 16px; /* Rounded bubble */
+  font-size: 0.85rem;  /* Small text */
+  line-height: 1.55;   /* Comfortable */
+  max-width: 80%;      /* Never takes full width */
+}
+
+/* Expert bubble — mint background, dark text */
+.expert-bubble {
+  background-color: var(--mint-light); /* Pale mint */
+  color: var(--dark-green);            /* Dark green text */
+  border-bottom-left-radius: 4px;      /* Flattens bottom-left corner — chat bubble tail */
+}
+
+/* User bubble — dark green background, white text */
+.user-bubble {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  border-bottom-right-radius: 4px;     /* Flattens bottom-right — tail points right */
+}
+
+/* Timestamp below bubbles */
+.chat-time {
+  font-size: 0.68rem;       /* Very small */
+  color: var(--text-muted); /* Grey */
+}
+
+/* Bottom input row: text field + send button */
+.chatroom-input-row {
+  display: flex;              /* Row */
+  gap: 10px;                  /* Space between input and button */
+  padding: 16px 20px;         /* Inner spacing */
+  background-color: var(--white); /* White background */
+  border-top: 1px solid #e8f0eb;  /* Subtle top border */
+}
+
+/* Chat text input */
+.chatroom-input {
+  flex: 1;                       /* Takes remaining space */
+  padding: 10px 14px;            /* Inner spacing */
+  border: 1.5px solid #d8ebe0;   /* Subtle border */
+  border-radius: var(--radius-pill); /* Pill shape */
+  font-family: var(--font-body); /* Body font */
+  font-size: 0.83rem;            /* Small */
+  color: var(--dark-green);      /* Dark green text */
+  outline: none;                 /* No default outline */
+  background-color: #f8fcfa;     /* Very light green-white */
+  transition: border-color 0.2s ease;
+}
+.chatroom-input:focus {
+  border-color: var(--dark-green); /* Dark green on focus */
+}
+.chatroom-input::placeholder {
+  color: #9ab8a5; /* Muted placeholder */
+}
+
+/* Send button */
+.chatroom-send-btn {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.82rem;                  /* Small */
+  font-weight: 600;                    /* Semi-bold */
+  padding: 10px 20px;                  /* Inner spacing */
+  border: none;                        /* No border */
+  border-radius: var(--radius-pill);   /* Pill */
+  cursor: pointer;                     /* Hand cursor */
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.chatroom-send-btn:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+  transform: translateY(-1px);           /* Slight lift */
+}

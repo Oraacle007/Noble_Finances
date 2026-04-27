@@ -41,8 +41,8 @@
       <a href="services.html" class="navbar-link">Services</a>
       <!-- Anchor link — clicking scrolls to the section with id="services" -->
 
-      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
-      <!-- CTA button linking to the booking/contact section -->
+      <button class="navbar-btn" onclick="openChatroomModal()">Book an appointment</button>
+      <!-- Opens the live chat modal to connect with a financial expert -->
 
     </div>
     <!-- End of navbar-right -->
@@ -67,8 +67,8 @@
       <p class="hero-subtitle">Trusted financial guidance for every stage of life and business since 1987</p>
       <!-- Short supporting sentence below the headline -->
 
-      <a href="appointment.html" class="btn-dark">Connect with our experts</a>
-      <!-- Primary call-to-action button -->
+      <button class="btn-dark" onclick="openContactModal()">Connect with our experts</button>
+      <!-- Opens the contact details modal — phone, email, address -->
 
     </div>
     <!-- End of hero-text -->
@@ -97,8 +97,8 @@
     <p class="services-sub">Serving Individuals and small businesses since 1987</p>
     <!-- Supporting subtitle text -->
 
-    <a href="appointment.html" class="btn-green-pill">Schedule a call</a>
-    <!-- Button below the heading -->
+    <button class="btn-green-pill" onclick="openChatroomModal()">Schedule a call</button>
+    <!-- Opens the chatroom to connect with an expert -->
 
   </section>
   <!-- End of services intro -->
@@ -463,8 +463,8 @@
     <p class="belief-text">We believe that tax filing should be seamless, accurate, and stress-free. Get started with Noble Finance today!</p>
     <!-- Large centered serif statement -->
 
-    <a href="#appointment" class="btn-dark">Connect with our experts</a>
-    <!-- Dark green pill CTA button -->
+    <button class="btn-dark" onclick="openContactModal()">Connect with our experts</button>
+    <!-- Opens the contact modal with phone, email and address -->
 
   </section>
   <!-- End of belief section -->
@@ -485,8 +485,8 @@
       <a href="services.html" class="footer-link">Services</a>
       <!-- Text link back to services section -->
 
-      <a href="appointment.html" class="footer-btn">Book an appointment</a>
-      <!-- Transparent pill button in the footer -->
+      <button class="footer-btn" onclick="openChatroomModal()">Book an appointment</button>
+      <!-- Opens chatroom modal -->
 
     </div>
     <!-- End of footer-right -->
@@ -516,6 +516,175 @@
        Placing it here ensures all HTML elements above already exist
        in the DOM before script.js tries to find and work with them
        ============================================================ -->
+  <!-- ============================================================
+       CONTACT MODAL
+       Opens when "Connect with our experts" is clicked.
+       Shows phone, email, and address contact details.
+       ============================================================ -->
+  <div class="modal-overlay" id="contactModal">
+  <!-- Full-screen dark overlay — hidden by default, JS adds class="open" to show -->
+
+    <div class="modal-box">
+    <!-- White rounded box that slides up from below -->
+
+      <button class="modal-close" onclick="closeContactModal()">&#x2715;</button>
+      <!-- × close button in the top right corner -->
+
+      <span class="modal-eyebrow">Noble Finances</span>
+      <!-- Small uppercase label at top of modal -->
+
+      <h2 class="modal-title">Get in Touch</h2>
+      <!-- Modal heading -->
+
+      <p class="modal-subtitle">We'd love to hear from you. Our team responds within 24 hours.</p>
+      <!-- Supporting text below heading -->
+
+      <hr class="modal-divider" />
+      <!-- Thin decorative separator line -->
+
+      <div class="modal-contact-details">
+      <!-- Stacked rows: icon + label + value -->
+
+        <!-- Email Row -->
+        <div class="contact-detail-row">
+          <div class="contact-icon">📧</div>
+          <!-- Email emoji in a mint circle -->
+          <div class="contact-detail-text">
+            <span class="contact-label">Email</span>
+            <a href="mailto:abiola.adeeko17@gmail.com" class="contact-value">abiola.adeeko17@gmail.com</a>
+            <!-- Clickable mailto link — opens email client -->
+          </div>
+        </div>
+
+        <!-- Phone Row -->
+        <div class="contact-detail-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <span class="contact-label">Phone</span>
+            <a href="tel:+2348137592363" class="contact-value">+234 813 759 2363</a>
+            <!-- Clickable tel link — dials on mobile -->
+          </div>
+        </div>
+
+        <!-- Location Row -->
+        <div class="contact-detail-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <span class="contact-label">Office</span>
+            <span class="contact-value">Block 7, Plot 12, Odolameso Lay-Out, Ijebu-Imusin, Ogun State</span>
+          </div>
+        </div>
+
+      </div>
+      <!-- End modal-contact-details -->
+
+      <p class="modal-form-title">Send us a message</p>
+      <!-- Heading above the form -->
+
+      <div class="modal-form">
+      <!-- Contact form fields -->
+
+        <input type="text" placeholder="Your full name" />
+        <!-- Name field -->
+
+        <input type="email" placeholder="Your email address" />
+        <!-- Email field -->
+
+        <textarea placeholder="How can we help you?"></textarea>
+        <!-- Message field -->
+
+        <button class="modal-submit" onclick="submitContactForm()">Send Message</button>
+        <!-- Submit button — calls submitContactForm() in script.js -->
+
+      </div>
+      <!-- End modal-form -->
+
+    </div>
+    <!-- End modal-box -->
+
+  </div>
+  <!-- End contact modal -->
+
+
+  <!-- ============================================================
+       CHATROOM MODAL
+       Opens when "Book an appointment" is clicked anywhere.
+       A live chat interface where users talk to a financial expert.
+       ============================================================ -->
+  <div class="modal-overlay" id="chatroomModal">
+  <!-- Full-screen overlay for the chatroom -->
+
+    <div class="modal-box chatroom-box">
+    <!-- Wider modal box styled for a chat interface -->
+
+      <div class="chatroom-header">
+      <!-- Top bar of the chatroom with expert info and close button -->
+
+        <div class="chatroom-expert-info">
+        <!-- Left side: avatar + name + online status -->
+
+          <div class="chatroom-avatar">💼</div>
+          <!-- Expert avatar — briefcase emoji in a dark green circle -->
+
+          <div>
+            <span class="chatroom-expert-name">Noble Finance Expert</span>
+            <!-- Expert name -->
+            <span class="chatroom-status">🟢 Online — ready to help</span>
+            <!-- Online status indicator -->
+          </div>
+
+        </div>
+
+        <button class="modal-close chatroom-close" onclick="closeChatroomModal()">&#x2715;</button>
+        <!-- Close button for the chatroom -->
+
+      </div>
+      <!-- End chatroom-header -->
+
+      <div class="chatroom-messages" id="chatroomMessages">
+      <!-- Scrollable message area — messages appear here -->
+
+        <div class="chat-message expert-message">
+        <!-- First message from the expert — shown by default -->
+
+          <div class="chat-bubble expert-bubble">
+            👋 Hello! Welcome to Noble Finances. I'm here to help you book an appointment or answer any questions. How can I assist you today?
+          </div>
+          <!-- Expert's opening greeting bubble -->
+
+          <span class="chat-time">Just now</span>
+          <!-- Timestamp below the bubble -->
+
+        </div>
+
+      </div>
+      <!-- End chatroom-messages -->
+
+      <div class="chatroom-input-row">
+      <!-- Bottom input area: text field + send button -->
+
+        <input
+          type="text"
+          class="chatroom-input"
+          id="chatroomInput"
+          placeholder="Type your message..."
+          onkeydown="handleChatKey(event)"
+        />
+        <!-- Chat input field — pressing Enter also sends the message -->
+
+        <button class="chatroom-send-btn" onclick="sendChatMessage()">Send</button>
+        <!-- Send button — calls sendChatMessage() in script.js -->
+
+      </div>
+      <!-- End chatroom-input-row -->
+
+    </div>
+    <!-- End chatroom-box -->
+
+  </div>
+  <!-- End chatroom modal -->
+
+
   <script src="script.js"></script>
   <!-- Links to the external script.js file where all JS logic lives -->
 
