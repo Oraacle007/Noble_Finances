@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- Declares this as an HTML5 document -->
+
+<html lang="en">
+<!-- lang="en" tells browsers the page language is English -->
+
+<head>
+  <!-- Head contains metadata and links — nothing visible to users -->
+
+  <meta charset="UTF-8" />
+  <!-- UTF-8 encoding — all characters display correctly -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Makes page responsive — scales correctly on phones and tablets -->
+
+  <title>Services — Noble Finances</title>
+  <!-- Browser tab title -->
+
+  <link rel="stylesheet" href="services.css" />
+  <!-- Links this page to services.css — its own dedicated stylesheet -->
+
+</head>
+
+<body>
+<!-- Body holds all visible page content -->
+
+
+  <!-- ============================================================
+       NAVBAR
+       Same visual appearance as index.html — sticky top bar
+       ============================================================ -->
+  <nav class="navbar">
+  <!-- Semantic <nav> element for navigation -->
+
+    <a href="homepage.html" class="navbar-logo">Noble Finances</a>
+    <!-- Logo links back to the landing page -->
+
+    <div class="navbar-right">
+    <!-- Wrapper for right-side nav items -->
+
+      <a href="services.html" class="navbar-link">Services</a>
+      <!-- Current page link -->
+
+      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
+      <!-- CTA button — scrolls to the goodbye/appointment section -->
+
+    </div>
+    <!-- End navbar-right -->
+
+  </nav>
+  <!-- End navbar -->
+
+
+  <!-- ============================================================
+       SERVICES HERO
+       White background — large serif headline left, PC+coins right
+       ============================================================ -->
+  <section class="services-hero reveal">
+  <!-- reveal class = JS will fade this in on load -->
+
+    <div class="services-hero-text">
+    <!-- Left text block -->
+
+      <h1 class="services-hero-title">Your Financial Journey, Clearly Defined</h1>
+      <!-- Main headline — 3 lines tall in the Figma design -->
+
+      <p class="services-hero-subtitle">Trusted financial guidance for every stage of life and business since 1987</p>
+      <!-- Supporting subtitle below headline -->
+
+      <a href="#appointment" class="btn-dark">Connect with our experts</a>
+      <!-- CTA button linking to the appointment section -->
+
+    </div>
+    <!-- End hero text -->
+
+    <img
+      src="PC with coins.png"
+      alt="3D illustration of a laptop with coins"
+      class="services-hero-img"
+    />
+    <!-- PC with coins 3D illustration — right side of hero -->
+
+  </section>
+  <!-- End services hero -->
+
+
+  <!-- ============================================================
+       IMAGE BREAK
+       Full-width skyscraper photograph — divides hero from onboarding
+       ============================================================ -->
+  <img
+    src="Image break.png"
+    alt="Looking up at tall skyscrapers representing business and financial growth"
+    class="image-break"
+  />
+  <!-- Standalone full-width image — no wrapper needed -->
+  <!-- CSS gives it fixed height and object-fit: cover -->
+
+
+  <!-- ============================================================
+       ONBOARDING SECTION
+       "A simple onboarding" — 3 numbered steps
+       Layout per step: [big number] [title + desc] [white image box]
+       ============================================================ -->
+  <section class="onboarding-section">
+  <!-- No reveal on the section wrapper — individual rows animate instead -->
+
+    <span class="onboarding-eyebrow">How it works</span>
+    <!-- Small grey label above the heading -->
+
+    <h2 class="onboarding-title">A simple onboarding</h2>
+    <!-- Section heading -->
+
+    <p class="onboarding-sub">Serving individuals and small businesses since 1987</p>
+    <!-- Supporting subtitle -->
+
+    <div class="steps-list">
+    <!-- Vertical container for all 3 step rows -->
+
+
+      <!-- ======================================================
+           STEP 1
+           Number: 1 | Title: Our tax advisors write you a plan
+           Image: pencils.png
+           ====================================================== -->
+      <div class="step-row reveal">
+      <!-- reveal = fades in when scrolled to -->
+
+        <div class="step-number">1</div>
+        <!-- Large decorative "1" — 8rem, light grey, Playfair Display serif -->
+        <!-- Purely decorative — user-select: none prevents accidental selection -->
+
+        <div class="step-text">
+        <!-- Middle column: heading and description -->
+
+          <h3 class="step-title">Our tax advisors write you a plan</h3>
+          <!-- Step heading -->
+
+          <p class="step-desc">Accurately prepare and file personal and business tax returns to maximize deductions and ensure compliance.</p>
+          <!-- Step description in muted grey -->
+
+        </div>
+        <!-- End step-text -->
+
+        <div class="step-img-box">
+        <!-- White rounded box with subtle shadow — RIGHT column -->
+        <!-- Key difference from previous version: WHITE not mint, TALLER, with shadow -->
+
+          <img
+            src="pencils.png"
+            alt="Two pencils representing planning and writing"
+            class="step-img"
+          />
+          <!-- Pencils image fills the white box — black bg crops cleanly -->
+
+        </div>
+        <!-- End step-img-box -->
+
+      </div>
+      <!-- End step 1 -->
+
+
+      <!-- ======================================================
+           STEP 2
+           Number: 2 | Title: Onboard us to your finances
+           Image: cash.png
+           ====================================================== -->
+      <div class="step-row reveal">
+      <!-- Fades in on scroll independently from step 1 -->
+
+        <div class="step-number">2</div>
+        <!-- Large decorative "2" -->
+
+        <div class="step-text">
+
+          <h3 class="step-title">Onboard us to your finances</h3>
+          <!-- Step 2 heading -->
+
+          <p class="step-desc">Offer expert guidance and representation to resolve tax audits and disputes with confidence.</p>
+          <!-- Step 2 description -->
+
+        </div>
+        <!-- End step-text -->
+
+        <div class="step-img-box">
+        <!-- White image box for step 2 -->
+
+          <img
+            src="cash.png"
+            alt="Hand holding various euro and dollar banknotes representing finances"
+            class="step-img"
+          />
+          <!-- Cash/banknotes image fills the white box -->
+
+        </div>
+        <!-- End step-img-box -->
+
+      </div>
+      <!-- End step 2 -->
+
+
+      <!-- ======================================================
+           STEP 3
+           Number: 3 | Title: We solve the rest
+           Image: dice.png (Rubik's cube)
+           ====================================================== -->
+      <div class="step-row reveal">
+      <!-- Fades in on scroll independently from steps 1 and 2 -->
+
+        <div class="step-number">3</div>
+        <!-- Large decorative "3" -->
+
+        <div class="step-text">
+
+          <h3 class="step-title">We solve the rest</h3>
+          <!-- Step 3 heading -->
+
+          <p class="step-desc">Maintain organized financial records and provide clear reports to support business growth and financial health.</p>
+          <!-- Step 3 description -->
+
+        </div>
+        <!-- End step-text -->
+
+        <div class="step-img-box">
+        <!-- White image box for step 3 -->
+
+          <img
+            src="dice-removebg-preview.png"
+            alt="Colourful Rubik's cube representing problem-solving"
+            class="step-img"
+          />
+          <!-- Rubik's cube image fills the white box -->
+
+        </div>
+        <!-- End step-img-box -->
+
+      </div>
+      <!-- End step 3 -->
+
+
+    </div>
+    <!-- End steps-list -->
+
+  </section>
+  <!-- End onboarding section -->
+
+
+  <!-- ============================================================
+       WE BELIEVE SECTION
+       Centered heading + 3 stacked pale mint belief cards
+       ============================================================ -->
+  <section class="believe-section reveal">
+
+    <span class="believe-eyebrow">Philosophy</span>
+    <!-- Small grey label above heading -->
+
+    <h2 class="believe-title">We believe:</h2>
+    <!-- Large centered heading -->
+
+    <div class="believe-cards">
+    <!-- Narrow centered column of 3 cards -->
+
+
+      <!-- Belief Card 1 -->
+      <div class="believe-card reveal">
+      <!-- Individual pale mint card -->
+
+        <span class="believe-number">01</span>
+        <!-- Small number at the top of the card -->
+
+        <p class="believe-text">In empowering individuals and small businesses with the knowledge and tools they need to achieve lasting financial confidence.</p>
+        <!-- Belief statement text -->
+
+      </div>
+      <!-- End belief card 1 -->
+
+
+      <!-- Belief Card 2 -->
+      <div class="believe-card reveal">
+
+        <span class="believe-number">02</span>
+
+        <p class="believe-text">That personalized, trusted guidance, built on decades of experience, is the foundation of a successful financial partnership.</p>
+
+      </div>
+      <!-- End belief card 2 -->
+
+
+      <!-- Belief Card 3 -->
+      <div class="believe-card reveal">
+
+        <span class="believe-number">03</span>
+
+        <p class="believe-text">In simplifying complex financial matters, providing clear, actionable strategies that pave the way for your financial well-being.</p>
+
+      </div>
+      <!-- End belief card 3 -->
+
+
+    </div>
+    <!-- End believe-cards -->
+
+  </section>
+  <!-- End we believe section -->
+
+
+  <!-- ============================================================
+       SAY GOODBYE SECTION
+       Split layout: dark green panel left | mint green panel right
+       Left: "Say goodbye to taxes of the past" + button
+       Right: Calculator image centered on mint background
+       ============================================================ -->
+  <section class="goodbye-section reveal" id="appointment">
+  <!-- id="appointment" is the anchor all "Book / Connect" links point to -->
+
+    <!-- Left panel — dark green background -->
+    <div class="goodbye-left">
+    <!-- flex-direction: column stacks heading and button vertically -->
+
+      <h2 class="goodbye-title">Say goodbye to taxes of the past</h2>
+      <!-- White heading on dark green background -->
+
+      <a href="#appointment" class="btn-dark">Connect with our experts</a>
+      <!-- Dark green button — still visible because btn-dark has its own bg -->
+
+    </div>
+    <!-- End goodbye-left -->
+
+    <!-- Right panel — mint green background -->
+    <div class="goodbye-right">
+    <!-- Bright mint panel — calculator image centered inside -->
+
+      <img
+        src="calculator.png"
+        alt="Grey calculator on mint green background"
+        class="goodbye-img"
+      />
+      <!-- Calculator image — already has mint background so it blends naturally -->
+
+    </div>
+    <!-- End goodbye-right -->
+
+  </section>
+  <!-- End goodbye section -->
+
+
+  <!-- ============================================================
+       FOOTER
+       Same dark green footer as the landing page
+       ============================================================ -->
+  <footer class="footer">
+
+    <span class="footer-logo">Noble Finances</span>
+    <!-- Brand name on the left -->
+
+    <div class="footer-right">
+    <!-- Right side: link and button -->
+
+      <a href="services.html" class="footer-link">Services</a>
+      <!-- Text link (this page) -->
+
+      <a href="#appointment" class="footer-btn">Book an Appointment</a>
+      <!-- Transparent pill button -->
+
+    </div>
+    <!-- End footer-right -->
+
+  </footer>
+  <!-- End footer -->
+
+
+  <!-- ============================================================
+       FOOTER BOTTOM BAR
+       Very dark strip — tagline left, copyright right
+       ============================================================ -->
+  <div class="footer-bottom">
+
+    <span class="footer-tagline">Financial Clarity You Can Trust</span>
+    <!-- Left tagline -->
+
+    <span class="footer-rights">© 2025 All Rights Reserved</span>
+    <!-- Right copyright -->
+
+  </div>
+  <!-- End footer-bottom -->
+
+
+  <!-- ============================================================
+       SCRIPT
+       Loaded last so all HTML elements above already exist in the
+       DOM before script.js tries to find and interact with them
+       ============================================================ -->
+  <script src="script.js"></script>
+  <!-- Shared JS file — scroll reveal runs automatically on this page -->
+
+</body>
+<!-- End body -->
+
+</html>
+<!-- End document -->

@@ -1,0 +1,607 @@
+/* ============================================================
+   appointment.css — Noble Finances APPOINTMENT PAGE Stylesheet
+   This file styles appointment.html ONLY.
+   Linked from appointment.html via <link rel="stylesheet" href="appointment.css">
+   ============================================================ */
+
+
+/* ===================== GOOGLE FONTS IMPORT ===================== */
+/* Loads Playfair Display (headings) and DM Sans (body) from Google */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+/* Playfair Display = serif — used for the large "Book an appointment now" heading */
+/* DM Sans = sans-serif — used for body text, nav, buttons */
+
+
+/* ===================== CSS VARIABLES ===================== */
+/* Defined on :root so they are available everywhere in this file */
+:root {
+  --mint-page: #c5ecd4;       /* The mint green used as the FULL PAGE background */
+  --mint-card: #aee0c0;       /* Slightly darker mint — the clock card background */
+  --dark-green: #2d4a3e;      /* Deep forest green — buttons, heading text, footer */
+  --darker-green: #1e3329;    /* Even darker — footer bg, hover states */
+  --footer-bg: #2d4a3e;       /* Dark green footer background */
+  --white: #ffffff;           /* Pure white — modal background, button text */
+  --text-on-mint: #2d4a3e;    /* Dark green text on mint background */
+  --text-muted-mint: #4a6b5a; /* Slightly lighter — subtitle text on mint */
+  --font-heading: 'Playfair Display', Georgia, serif; /* Serif for main heading */
+  --font-body: 'DM Sans', sans-serif;                 /* Sans-serif for everything else */
+  --radius-pill: 999px;   /* Fully rounded pill buttons */
+  --radius-card: 24px;    /* Large rounding for the clock card */
+  --radius-modal: 20px;   /* Rounding for the contact modal */
+}
+
+
+/* ===================== CSS RESET ===================== */
+/* Removes all browser default spacing and ensures consistent box model */
+*, *::before, *::after {
+  margin: 0;               /* No outer spacing */
+  padding: 0;              /* No inner spacing */
+  box-sizing: border-box;  /* Width and height include padding and border */
+}
+
+
+/* ===================== BASE ===================== */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  height: 100%;            /* Full height — needed for min-height on body */
+}
+
+body {
+  font-family: var(--font-body);        /* DM Sans as default */
+  background-color: var(--mint-page);   /* FULL PAGE mint green background */
+  color: var(--text-on-mint);           /* Default dark green text */
+  line-height: 1.6;                     /* Comfortable line spacing */
+  overflow-x: hidden;                   /* No horizontal scroll */
+  min-height: 100vh;                    /* Page fills at least full viewport height */
+}
+
+
+/* ============================================================
+   NAVBAR
+   Sits on the mint green background — logo + services link + button
+   ============================================================ */
+.navbar {
+  display: flex;                         /* Row layout */
+  justify-content: space-between;        /* Logo left, items right */
+  align-items: center;                   /* Vertically centered */
+  padding: 22px 48px;                    /* Top/bottom and left/right padding */
+  background-color: transparent;         /* Transparent — shows mint page bg */
+  position: sticky;                      /* Sticks to top on scroll */
+  top: 0;                                /* Sticks at very top */
+  z-index: 100;                          /* Above page content but below modal */
+}
+
+/* "Noble Finances" logo text */
+.navbar-logo {
+  font-family: var(--font-body);     /* DM Sans */
+  font-size: 1rem;                   /* Slightly larger than services page */
+  font-weight: 600;                  /* Semi-bold — matches Figma */
+  color: var(--dark-green);          /* Dark green on mint background */
+  text-decoration: none;             /* No underline */
+}
+
+/* Right side wrapper */
+.navbar-right {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 24px;           /* Space between items */
+}
+
+/* "Services" text link */
+.navbar-link {
+  font-size: 0.88rem;             /* Small */
+  font-weight: 400;               /* Normal */
+  color: var(--dark-green);       /* Dark green on mint */
+  text-decoration: none;          /* No underline */
+  transition: opacity 0.2s ease;  /* Smooth fade on hover */
+}
+
+.navbar-link:hover {
+  opacity: 0.65; /* Dims slightly on hover */
+}
+
+/* "Book an appointment" dark green pill button */
+.navbar-btn {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.85rem;                  /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 10px 22px;                  /* Inner spacing */
+  border: none;                        /* No border */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  cursor: pointer;                     /* Hand cursor */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease;    /* Smooth hover */
+}
+
+.navbar-btn:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+}
+
+
+/* ============================================================
+   HERO SECTION
+   Two-column layout on mint background:
+   Left: darker mint card with clock image
+   Right: heading + subtitle + Contact Us button
+   ============================================================ */
+.hero-section {
+  display: flex;                   /* Side-by-side columns */
+  align-items: center;             /* Vertically centered */
+  justify-content: space-between;  /* Card left, text right */
+  gap: 60px;                       /* Space between the two columns */
+  padding: 60px 48px 80px;         /* Top, sides, bottom */
+  max-width: 1100px;               /* Limits width for large screens */
+  margin: 0 auto;                  /* Centers the content area */
+}
+
+/* ---- LEFT COLUMN: The darker mint card with clock ---- */
+.clock-card {
+  background-color: var(--mint-card); /* Darker mint — visually distinct from page bg */
+  border-radius: var(--radius-card);  /* Large rounded corners — matches Figma */
+  width: 460px;                       /* Fixed width — large card */
+  height: 460px;                      /* Equal height — square card */
+  display: flex;                      /* Centers clock inside */
+  align-items: center;                /* Vertically centered */
+  justify-content: center;            /* Horizontally centered */
+  flex-shrink: 0;                     /* Never shrinks */
+  overflow: hidden;                   /* Clips image to card bounds */
+}
+
+/* The clock image inside the card */
+.clock-img {
+  width: 85%;          /* Takes most of the card width */
+  height: auto;        /* Auto height */
+  object-fit: contain; /* Full image shown without cropping */
+}
+
+/* ---- RIGHT COLUMN: Heading + subtitle + button ---- */
+.hero-text {
+  flex: 1;          /* Takes remaining space after the card */
+  max-width: 480px; /* Limits text width for readability */
+}
+
+/* "Book an appointment now" — the large heading */
+.hero-title {
+  font-family: var(--font-heading); /* Playfair Display serif */
+  font-size: 3.6rem;                /* Very large — dominant heading */
+  font-weight: 700;                 /* Bold */
+  color: var(--dark-green);         /* Dark green on mint background */
+  line-height: 1.15;                /* Tight spacing */
+  margin-bottom: 20px;              /* Space below heading */
+}
+
+/* "Serving individuals and small businesses since 1987" */
+.hero-subtitle {
+  font-size: 0.9rem;              /* Small body text */
+  color: var(--text-muted-mint);  /* Slightly lighter dark green */
+  margin-bottom: 36px;            /* Space before the button */
+  line-height: 1.6;               /* Comfortable */
+}
+
+/* "Contact Us" button — dark green pill */
+.btn-contact {
+  display: inline-block;               /* Allows padding */
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.88rem;                  /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 12px 28px;                  /* Comfortable inner spacing */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  border: none;                        /* No border */
+  cursor: pointer;                     /* Hand cursor */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease, transform 0.15s ease; /* Smooth hover */
+}
+
+.btn-contact:hover {
+  background-color: var(--darker-green); /* Slightly darker on hover */
+  transform: translateY(-2px);           /* Slight lift effect */
+}
+
+
+/* ============================================================
+   CONTACT MODAL
+   A classy full-screen overlay that slides in when
+   "Contact Us" is clicked. Smooth animation, clean design.
+   ============================================================ */
+
+/* The dark overlay behind the modal */
+.modal-overlay {
+  position: fixed;              /* Fixed to viewport — stays in place on scroll */
+  top: 0;                       /* Covers from top */
+  left: 0;                      /* Covers from left */
+  width: 100%;                  /* Full viewport width */
+  height: 100%;                 /* Full viewport height */
+  background-color: rgba(30, 51, 41, 0.6); /* Semi-transparent dark green overlay */
+  z-index: 1000;                /* Above everything on the page */
+  display: flex;                /* Centers the modal box */
+  align-items: center;          /* Vertically centered */
+  justify-content: center;      /* Horizontally centered */
+  opacity: 0;                   /* Invisible by default */
+  visibility: hidden;           /* Hidden and non-interactive by default */
+  transition: opacity 0.35s ease, visibility 0.35s ease; /* Smooth fade in/out */
+}
+
+/* When JS adds .open class — overlay fades in */
+.modal-overlay.open {
+  opacity: 1;       /* Fully visible */
+  visibility: visible; /* Now interactive */
+}
+
+/* The white modal box */
+.modal-box {
+  background-color: var(--white);      /* White background */
+  border-radius: var(--radius-modal);  /* Rounded corners */
+  padding: 52px 56px;                  /* Generous inner spacing */
+  width: 100%;                         /* Responsive width */
+  max-width: 520px;                    /* Max width on large screens */
+  max-height: 90vh;                    /* Never taller than 90% of the viewport */
+  overflow-y: auto;                    /* Scroll inside the box if content overflows */
+  position: relative;                  /* For close button positioning */
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2); /* Deep shadow — lifts modal off overlay */
+  transform: translateY(30px);         /* Starts slightly below final position */
+  transition: transform 0.35s ease;   /* Smooth slide-up animation */
+}
+
+/* When overlay opens — modal slides up to final position */
+.modal-overlay.open .modal-box {
+  transform: translateY(0); /* Slides up to natural position */
+}
+
+/* Close button — "×" in the top right corner of the modal */
+.modal-close {
+  position: absolute;          /* Positioned relative to .modal-box */
+  top: 20px;                   /* 20px from top of modal */
+  right: 24px;                 /* 24px from right of modal */
+  background: none;            /* No background */
+  border: none;                /* No border */
+  font-size: 1.6rem;           /* Large × symbol */
+  color: var(--text-on-mint);  /* Dark green */
+  cursor: pointer;             /* Hand cursor */
+  line-height: 1;              /* No extra height */
+  transition: opacity 0.2s;   /* Smooth fade on hover */
+}
+
+.modal-close:hover {
+  opacity: 0.5; /* Dims on hover */
+}
+
+/* Small label above the modal heading */
+.modal-eyebrow {
+  display: block;              /* Own line */
+  font-size: 0.72rem;          /* Very small */
+  font-weight: 500;            /* Medium */
+  color: var(--dark-green);    /* Dark green */
+  letter-spacing: 2px;         /* Wide letter spacing */
+  text-transform: uppercase;   /* ALL CAPS */
+  margin-bottom: 12px;         /* Space below */
+  opacity: 0.6;                /* Slightly faded */
+}
+
+/* "Get in Touch" modal heading */
+.modal-title {
+  font-family: var(--font-heading); /* Playfair Display */
+  font-size: 2rem;                  /* Large */
+  font-weight: 700;                 /* Bold */
+  color: var(--dark-green);         /* Dark green */
+  margin-bottom: 8px;               /* Space below */
+  line-height: 1.25;                /* Tight */
+}
+
+/* Subtitle below the heading */
+.modal-subtitle {
+  font-size: 0.85rem;             /* Small */
+  color: var(--text-muted-mint);  /* Muted dark green */
+  margin-bottom: 36px;            /* Space before the form fields */
+  line-height: 1.6;               /* Comfortable */
+}
+
+/* Thin divider line */
+.modal-divider {
+  border: none;                       /* No default border */
+  border-top: 1px solid #e8f0eb;      /* Very subtle green-tinted line */
+  margin-bottom: 28px;                /* Space below */
+}
+
+/* Container for contact detail rows */
+.modal-contact-details {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Stacked */
+  gap: 20px;              /* Space between each row */
+  margin-bottom: 36px;    /* Space before the form */
+}
+
+/* Individual contact detail row (icon + label + value) */
+.contact-detail-row {
+  display: flex;       /* Horizontal row */
+  align-items: center; /* Vertically centered */
+  gap: 14px;           /* Space between icon and text */
+}
+
+/* Icon circle for each contact detail */
+.contact-icon {
+  width: 40px;                         /* Fixed size */
+  height: 40px;                        /* Equal — circle */
+  border-radius: 50%;                  /* Perfect circle */
+  background-color: var(--mint-page);  /* Mint background matching page */
+  display: flex;                       /* Centers icon inside */
+  align-items: center;                 /* Vertically */
+  justify-content: center;             /* Horizontally */
+  font-size: 1rem;                     /* Emoji/icon size */
+  flex-shrink: 0;                      /* Never shrinks */
+}
+
+/* Label + value text block beside the icon */
+.contact-detail-text {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Label above value */
+}
+
+/* Small label e.g. "Email", "Phone" */
+.contact-label {
+  font-size: 0.7rem;           /* Very small */
+  font-weight: 500;            /* Medium bold */
+  color: var(--text-muted-mint); /* Muted */
+  text-transform: uppercase;   /* CAPS */
+  letter-spacing: 1px;         /* Slightly spaced */
+}
+
+/* The actual contact value e.g. "hello@noblefinances.com" */
+.contact-value {
+  font-size: 0.9rem;          /* Normal size */
+  font-weight: 500;           /* Medium bold */
+  color: var(--dark-green);   /* Dark green */
+  text-decoration: none;      /* No underline for links */
+}
+
+.contact-value:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Form section heading */
+.modal-form-title {
+  font-size: 0.88rem;         /* Small */
+  font-weight: 600;           /* Semi-bold */
+  color: var(--dark-green);   /* Dark green */
+  margin-bottom: 16px;        /* Space below */
+}
+
+/* The contact form */
+.modal-form {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Fields stacked */
+  gap: 12px;              /* Space between each field */
+}
+
+/* Input and textarea shared styles */
+.modal-form input,
+.modal-form textarea {
+  width: 100%;                   /* Full width of modal */
+  padding: 12px 16px;            /* Inner spacing */
+  border: 1.5px solid #d8ebe0;   /* Subtle green-tinted border */
+  border-radius: 10px;           /* Slightly rounded */
+  font-family: var(--font-body); /* Body font */
+  font-size: 0.85rem;            /* Small */
+  color: var(--dark-green);      /* Dark green text */
+  background-color: #f8fcfa;     /* Very light green-white */
+  outline: none;                 /* Removes default browser outline */
+  transition: border-color 0.2s ease; /* Smooth border color on focus */
+}
+
+/* Highlights the field when user clicks/focuses on it */
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: var(--dark-green); /* Dark green border when focused */
+}
+
+/* Placeholder text inside inputs */
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {
+  color: #9ab8a5;  /* Muted mint-grey placeholder color */
+}
+
+/* Message textarea — taller than inputs */
+.modal-form textarea {
+  height: 100px;   /* Fixed height for message box */
+  resize: none;    /* Prevents user from resizing — keeps layout clean */
+}
+
+/* "Send Message" submit button */
+.modal-submit {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.88rem;                  /* Small */
+  font-weight: 600;                    /* Semi-bold */
+  padding: 13px;                       /* Full-width padding */
+  border: none;                        /* No border */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  cursor: pointer;                     /* Hand cursor */
+  width: 100%;                         /* Full width of modal */
+  margin-top: 4px;                     /* Small gap from last field */
+  transition: background 0.2s ease;    /* Smooth hover */
+}
+
+.modal-submit:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+}
+
+
+/* ============================================================
+   FOOTER
+   Large dark green footer — matches Figma design
+   Much taller and more spacious than other pages
+   ============================================================ */
+.footer {
+  background-color: var(--footer-bg); /* Dark green */
+  color: var(--white);                /* White text */
+  padding: 60px 48px 0;              /* Large top padding, no bottom (bottom bar handles it) */
+  display: flex;                      /* Row layout */
+  justify-content: space-between;     /* Logo left, links right */
+  align-items: flex-start;            /* Aligned to top */
+}
+
+/* "Noble Finances" — large in the footer on this page */
+.footer-logo {
+  font-family: var(--font-heading); /* Playfair Display — serif for footer on this page */
+  font-size: 1.8rem;                /* Large — more prominent than other pages */
+  font-weight: 700;                 /* Bold */
+  color: var(--white);              /* White */
+}
+
+/* Right side: links and button */
+.footer-right {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 20px;           /* Space between */
+  padding-top: 10px;   /* Slight top offset to align with logo baseline */
+}
+
+/* "Services" text link */
+.footer-link {
+  color: rgba(255,255,255,0.75); /* Semi-transparent white */
+  text-decoration: none;         /* No underline */
+  font-size: 0.85rem;            /* Small */
+  transition: color 0.2s;       /* Smooth hover */
+}
+
+.footer-link:hover {
+  color: var(--white); /* Full white on hover */
+}
+
+/* "Book An Appointment" transparent pill button */
+.footer-btn {
+  background-color: rgba(255,255,255,0.12); /* Subtle transparent */
+  color: var(--white);                      /* White text */
+  font-family: var(--font-body);            /* Body font */
+  font-size: 0.82rem;                       /* Small */
+  font-weight: 500;                         /* Medium */
+  padding: 9px 18px;                        /* Inner spacing */
+  border-radius: var(--radius-pill);        /* Pill */
+  border: 1px solid rgba(255,255,255,0.3);  /* Subtle white border */
+  cursor: pointer;                          /* Pointer */
+  text-decoration: none;                    /* No underline */
+  transition: background 0.2s;             /* Smooth hover */
+}
+
+.footer-btn:hover {
+  background-color: rgba(255,255,255,0.22); /* Slightly brighter on hover */
+}
+
+/* Large spacer inside the footer — creates the tall dark area in the Figma */
+.footer-spacer {
+  height: 180px; /* Empty space — makes the footer tall and dramatic */
+}
+
+
+/* ============================================================
+   FOOTER BOTTOM BAR
+   Dark strip at very bottom — two text lines left, copyright right
+   ============================================================ */
+.footer-bottom {
+  background-color: var(--footer-bg); /* Same dark green as footer */
+  padding: 20px 48px 28px;            /* Padding */
+  display: flex;                      /* Row */
+  justify-content: space-between;     /* Left text, right text */
+  align-items: flex-end;              /* Aligned to bottom */
+  border-top: 1px solid rgba(255,255,255,0.1); /* Very subtle separator */
+}
+
+/* Left side — two lines of small text stacked */
+.footer-bottom-left {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Stacked */
+  gap: 4px;               /* Small gap between lines */
+}
+
+/* First line "Financial Clarity You Can Trust" */
+.footer-tagline {
+  font-size: 0.75rem;             /* Very small */
+  color: rgba(255,255,255,0.55);  /* Faded white */
+}
+
+/* Second line "Trusted financial guidance..." */
+.footer-tagline-sub {
+  font-size: 0.72rem;             /* Slightly smaller */
+  color: rgba(255,255,255,0.35);  /* More faded */
+}
+
+/* Right side copyright text */
+.footer-rights {
+  font-size: 0.72rem;             /* Very small */
+  color: rgba(255,255,255,0.45);  /* Faded white */
+}
+
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   JS adds .visible when element enters the viewport
+   ============================================================ */
+
+/* Initial invisible state */
+.reveal {
+  opacity: 0;                  /* Transparent */
+  transform: translateY(24px); /* Shifted 24px below */
+  transition: opacity 0.55s ease, transform 0.55s ease; /* Smooth */
+}
+
+/* JS adds this class when element is on screen */
+.reveal.visible {
+  opacity: 1;               /* Visible */
+  transform: translateY(0); /* Original position */
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile adjustments
+   ============================================================ */
+@media (max-width: 860px) {
+
+  /* Reduce navbar padding */
+  .navbar { padding: 18px 24px; }
+
+  /* Stack hero columns vertically */
+  .hero-section {
+    flex-direction: column; /* Stack card above text */
+    align-items: center;    /* Center both */
+    padding: 40px 24px 60px; /* Reduced padding */
+    gap: 36px;              /* Reduced gap */
+  }
+
+  /* Make clock card square but smaller on mobile */
+  .clock-card {
+    width: 100%;       /* Full width */
+    max-width: 340px;  /* Max size */
+    height: 320px;     /* Shorter */
+  }
+
+  /* Smaller hero heading on mobile */
+  .hero-title { font-size: 2.6rem; }
+
+  /* Center text on mobile */
+  .hero-text { text-align: center; max-width: 100%; }
+
+  /* Modal takes most of screen width on mobile */
+  .modal-box { padding: 36px 28px; margin: 16px; }
+
+  /* Stack footer on mobile */
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 24px 0;
+  }
+
+  /* Reduce footer spacer on mobile */
+  .footer-spacer { height: 60px; }
+
+  /* Stack footer bottom */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 24px;
+  }
+}

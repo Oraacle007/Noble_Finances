@@ -1,0 +1,806 @@
+/* ============================================================
+   index.css — Noble Finances LANDING PAGE Stylesheet
+   This file styles index.html ONLY.
+   It is linked from index.html via <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+
+/* ===================== GOOGLE FONTS IMPORT ===================== */
+/* Pulls two fonts from Google's servers before the page renders */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+/* Playfair Display = elegant serif font used for all big headings */
+/* DM Sans = clean sans-serif font used for body text and buttons */
+
+
+/* ===================== CSS CUSTOM PROPERTIES (VARIABLES) ===================== */
+/* :root targets the entire HTML document */
+/* Variables defined here can be used anywhere below with var(--name) */
+:root {
+  --mint: #b8e5c8;          /* Bright mint green — hero background */
+  --mint-light: #e8f5ee;    /* Very pale mint — card backgrounds */
+  --dark-green: #2d4a3e;    /* Deep forest green — buttons, footer */
+  --darker-green: #1e3329;  /* Even darker green — footer bottom bar, hover states */
+  --white: #ffffff;         /* Pure white — page and section backgrounds */
+  --text-black: #111111;    /* Near-black — headings and main text */
+  --text-body: #444444;     /* Dark grey — body paragraphs */
+  --text-muted: #777777;    /* Medium grey — captions, small labels */
+  --tag-bg: #d6ede0;        /* Soft green — tag badge backgrounds */
+  --tag-text: #2d4a3e;      /* Dark green — tag badge text */
+  --border-light: #e0ece5;  /* Subtle green-tinted border color */
+  --font-heading: 'Playfair Display', Georgia, serif; /* Serif font for headings */
+  --font-body: 'DM Sans', sans-serif;                 /* Sans-serif for body text */
+  --radius-pill: 999px;  /* Very large radius — creates pill/capsule shaped buttons */
+  --radius-card: 20px;   /* Standard card corner rounding */
+  --radius-sm: 8px;      /* Small rounding for tags */
+}
+
+
+/* ===================== CSS RESET ===================== */
+/* Removes all default browser spacing and box model differences */
+*, *::before, *::after {
+  margin: 0;               /* Removes all default outer spacing */
+  padding: 0;              /* Removes all default inner spacing */
+  box-sizing: border-box;  /* Width/height includes padding and border */
+}
+
+
+/* ===================== BASE HTML & BODY ===================== */
+html {
+  scroll-behavior: smooth; /* Anchor links (#id) scroll smoothly instead of jumping */
+}
+
+body {
+  font-family: var(--font-body);   /* Sets DM Sans as the default font for all text */
+  background-color: var(--white);  /* White page background */
+  color: var(--text-black);        /* Default text color */
+  line-height: 1.6;                /* Default line spacing — improves readability */
+  overflow-x: hidden;              /* Prevents horizontal scroll from overflow */
+}
+
+
+/* ============================================================
+   NAVBAR
+   Sticky bar at the top — logo left, links + button right
+   ============================================================ */
+.navbar {
+  display: flex;                   /* Lays out logo and nav-right side by side */
+  justify-content: space-between;  /* Pushes logo far left, nav-right far right */
+  align-items: center;             /* Vertically centers everything in the bar */
+  padding: 18px 40px;              /* 18px top/bottom padding, 40px left/right */
+  background-color: var(--white);  /* White navbar background */
+  position: sticky;                /* Navbar sticks to the top of the screen on scroll */
+  top: 0;                          /* Sticks at y=0 — the very top */
+  z-index: 999;                    /* Renders above all other content */
+}
+
+/* "Noble Finances" brand/logo text */
+.navbar-logo {
+  font-family: var(--font-body);  /* Uses DM Sans — matches the Figma design */
+  font-size: 0.9rem;              /* Small logo text size */
+  font-weight: 500;               /* Medium weight */
+  color: var(--text-black);       /* Dark text */
+  text-decoration: none;          /* Removes link underline */
+}
+
+/* Wrapper div for the right side items (link + button) */
+.navbar-right {
+  display: flex;       /* Horizontal row layout */
+  align-items: center; /* Vertically centers items */
+  gap: 24px;           /* 24px space between each item */
+}
+
+/* "Services" text link */
+.navbar-link {
+  font-size: 0.85rem;         /* Small text */
+  font-weight: 400;           /* Normal weight */
+  color: var(--text-black);   /* Dark text */
+  text-decoration: none;      /* No underline */
+  transition: opacity 0.2s;   /* Smooth fade on hover */
+}
+
+.navbar-link:hover {
+  opacity: 0.6; /* Dims the link when hovered */
+}
+
+/* "Book an appointment" green pill button */
+.navbar-btn {
+  background-color: var(--dark-green); /* Dark green background */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.82rem;                  /* Small text */
+  font-weight: 500;                    /* Medium bold */
+  padding: 9px 18px;                   /* Inner spacing */
+  border: none;                        /* No border */
+  border-radius: var(--radius-pill);   /* Fully rounded pill shape */
+  cursor: pointer;                     /* Shows hand cursor on hover */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease;    /* Smooth color change on hover */
+}
+
+.navbar-btn:hover {
+  background-color: var(--darker-green); /* Slightly darker green on hover */
+}
+
+
+/* ============================================================
+   HERO SECTION
+   Large mint-green banner — headline + subtitle + button + globe
+   ============================================================ */
+.hero {
+  background-color: var(--mint);   /* Bright mint green background */
+  padding: 60px 40px 70px;         /* Top, left/right, bottom padding */
+  display: flex;                   /* Lays text and globe side by side */
+  align-items: center;             /* Vertically centers both sides */
+  justify-content: space-between;  /* Text pushed left, globe pushed right */
+  min-height: 320px;               /* Minimum height — matches Figma proportions */
+}
+
+/* Left side — text content block */
+.hero-text {
+  max-width: 420px; /* Prevents text from getting too wide */
+}
+
+/* Main headline "Financial Clarity You Can Trust" */
+.hero-title {
+  font-family: var(--font-heading); /* Playfair Display serif */
+  font-size: 3rem;                  /* Large headline size */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Near-black */
+  line-height: 1.15;                /* Tight line spacing for large text */
+  margin-bottom: 14px;              /* Space below heading */
+}
+
+/* Subtitle text below the headline */
+.hero-subtitle {
+  font-size: 0.82rem;       /* Small body text */
+  color: var(--text-body);  /* Dark grey */
+  margin-bottom: 24px;      /* Space before button */
+  line-height: 1.6;         /* Readable line height */
+}
+
+/* "Connect with our experts" and other dark green buttons */
+.btn-dark {
+  display: inline-block;               /* Allows padding on anchor tags */
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.8rem;                   /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 10px 20px;                  /* Inner spacing */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  border: none;                        /* No border */
+  cursor: pointer;                     /* Hand cursor */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease;    /* Smooth hover color change */
+}
+
+.btn-dark:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+}
+
+/* Globe illustration on the right side of the hero */
+.hero-globe {
+  width: 260px;         /* Fixed display width */
+  height: auto;         /* Height scales proportionally */
+  object-fit: contain;  /* Shows full image without cropping */
+  flex-shrink: 0;       /* Prevents image from shrinking under pressure */
+}
+
+
+/* ============================================================
+   SERVICES INTRO
+   Centered text block — label, heading, subtitle, button
+   ============================================================ */
+.services-intro {
+  text-align: center;              /* Centers all content */
+  padding: 70px 40px 36px;         /* Top, sides, bottom */
+  background-color: var(--white);  /* White background */
+}
+
+/* Small "Services" uppercase label above the heading */
+.section-eyebrow {
+  display: block;             /* Forces it onto its own line */
+  font-size: 0.72rem;         /* Very small text */
+  font-weight: 400;           /* Normal weight */
+  color: var(--text-muted);   /* Grey color */
+  letter-spacing: 1.5px;      /* Wide letter spacing */
+  text-transform: uppercase;  /* ALL CAPS */
+  margin-bottom: 14px;        /* Space below */
+}
+
+/* "Let us handle the numbers..." heading */
+.services-heading {
+  font-family: var(--font-heading); /* Playfair Display */
+  font-size: 2.4rem;                /* Large heading */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Dark */
+  line-height: 1.25;                /* Comfortable spacing */
+  max-width: 620px;                 /* Prevents overly wide heading */
+  margin: 0 auto 10px;              /* Centers block, adds space below */
+}
+
+/* "Serving Individuals and small businesses since 1987" */
+.services-sub {
+  font-size: 0.82rem;       /* Small text */
+  color: var(--text-muted); /* Grey */
+  margin-bottom: 24px;      /* Space before button */
+}
+
+/* "Schedule a call" green pill button */
+.btn-green-pill {
+  display: inline-block;               /* Allows padding */
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.8rem;                   /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 10px 20px;                  /* Padding */
+  border-radius: var(--radius-pill);   /* Pill */
+  border: none;                        /* No border */
+  cursor: pointer;                     /* Pointer */
+  text-decoration: none;               /* No underline */
+}
+
+
+/* ============================================================
+   SERVICE CARDS
+   Large stacked cards for Tax Prep, IRS Audit, Bookkeeping
+   ============================================================ */
+
+/* Outer container holding all service cards */
+.service-cards-wrapper {
+  padding: 0 40px 60px; /* No top, 40px sides, 60px bottom */
+  display: flex;         /* Stacks cards vertically */
+  flex-direction: column;/* Column direction */
+  gap: 20px;             /* Space between each card */
+}
+
+/* Individual service card */
+.service-card {
+  background-color: var(--mint-light); /* Pale mint background */
+  border-radius: var(--radius-card);   /* Rounded corners */
+  padding: 44px 48px;                  /* Generous inner spacing */
+  display: flex;                       /* Side-by-side layout */
+  align-items: center;                 /* Vertically centered */
+  justify-content: space-between;      /* Text left, image right */
+  gap: 32px;                           /* Gap between text and image */
+}
+
+/* Second card gets a slightly different shade and offset position */
+.service-card.card-offset {
+  background-color: #f0f7f3; /* Slightly different tone */
+  margin-left: 20px;         /* Offset right to match Figma layout */
+  margin-right: -20px;       /* Compensates so total page width stays the same */
+}
+
+/* Text content block inside a card */
+.card-text {
+  flex: 1; /* Takes all available space — image stays fixed width */
+}
+
+/* Card heading e.g. "Tax Preparation & Filing" */
+.card-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 1.5rem;                /* Medium-large */
+  font-weight: 600;                 /* Semi-bold */
+  color: var(--text-black);         /* Dark */
+  margin-bottom: 12px;              /* Space below */
+  line-height: 1.25;                /* Tight */
+}
+
+/* Card description paragraph */
+.card-desc {
+  font-size: 0.82rem;       /* Small */
+  color: var(--text-body);  /* Dark grey */
+  line-height: 1.65;        /* Comfortable */
+  margin-bottom: 18px;      /* Space before tags */
+  max-width: 320px;         /* Limits line length */
+}
+
+/* Row of tag badges */
+.card-tags {
+  display: flex;   /* Horizontal row */
+  gap: 8px;        /* Space between badges */
+  flex-wrap: wrap; /* Wraps to next line if needed */
+}
+
+/* Individual tag badge e.g. "1099 forms" */
+.tag {
+  background-color: var(--tag-bg);  /* Pale green */
+  color: var(--tag-text);           /* Dark green text */
+  font-size: 0.72rem;               /* Very small */
+  font-weight: 500;                 /* Medium bold */
+  padding: 5px 12px;                /* Inner spacing */
+  border-radius: var(--radius-sm);  /* Slightly rounded corners */
+}
+
+/* Illustration image on right side of card */
+.card-img {
+  width: 200px;         /* Fixed width */
+  height: auto;         /* Auto height */
+  object-fit: contain;  /* No cropping */
+  flex-shrink: 0;       /* Never shrinks */
+}
+
+
+/* ============================================================
+   BOOKKEEPING CARD
+   Wider card with image on LEFT — reversed layout
+   ============================================================ */
+.bookkeeping-card {
+  background-color: var(--mint-light); /* Pale mint */
+  border-radius: var(--radius-card);   /* Rounded */
+  padding: 44px 48px;                  /* Inner spacing */
+  display: flex;                       /* Side-by-side */
+  align-items: center;                 /* Vertically centered */
+  gap: 36px;                           /* Space between image and text */
+  margin: 0 40px 20px;                 /* Left/right margin and bottom gap */
+}
+
+/* Safe box image on the LEFT */
+.bookkeeping-img {
+  width: 160px;         /* Fixed width */
+  height: auto;         /* Auto height */
+  object-fit: contain;  /* No cropping */
+  flex-shrink: 0;       /* Never shrinks */
+}
+
+
+/* ============================================================
+   TESTIMONIALS SECTION
+   Client list left, active quote right
+   ============================================================ */
+.testimonials-section {
+  padding: 72px 40px 80px;         /* Top, sides, bottom */
+  background-color: var(--white);  /* White background */
+}
+
+/* "Hear From Our Happy Clients" heading */
+.testimonials-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2rem;                  /* Large */
+  font-weight: 700;                 /* Bold */
+  text-align: center;               /* Centered */
+  color: var(--text-black);         /* Dark */
+  margin-bottom: 44px;              /* Space before layout */
+}
+
+/* Two-column grid layout */
+.testimonials-grid {
+  display: grid;                    /* CSS Grid */
+  grid-template-columns: 220px 1fr; /* Fixed narrow left, flexible right */
+  gap: 36px;                        /* Space between columns */
+  max-width: 860px;                 /* Limits total width */
+  margin: 0 auto;                   /* Centers the grid */
+  align-items: start;               /* Both columns align to top */
+}
+
+/* Stacked list of client names on the left */
+.client-list {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Column direction */
+}
+
+/* Clickable client name row */
+.client-item {
+  padding: 12px 14px;     /* Inner spacing */
+  cursor: pointer;        /* Shows hand cursor — indicates clickable */
+  border-radius: 10px;    /* Slightly rounded */
+  transition: background 0.2s; /* Smooth highlight change */
+}
+
+/* Active/selected client — dark green highlight */
+.client-item.active {
+  background-color: var(--dark-green); /* Dark green background */
+  color: var(--white);                 /* White text */
+}
+
+/* Client profession/role e.g. "Graphic Designer" */
+.client-profession {
+  font-size: 0.85rem;  /* Small */
+  font-weight: 500;    /* Medium bold */
+  display: block;      /* Forces onto own line */
+}
+
+/* Client location e.g. "Ontario, Canada" */
+.client-location {
+  font-size: 0.75rem; /* Very small */
+  display: block;     /* Own line */
+  margin-top: 2px;    /* Tiny gap from profession */
+  opacity: 0.75;      /* Slightly faded */
+}
+
+/* Thin separator between client items */
+.client-divider {
+  border: none;                           /* Removes default border */
+  border-top: 1px solid var(--border-light); /* Single thin line */
+  margin: 4px 0;                          /* Small vertical gap */
+}
+
+/* Right side quote container */
+.quote-box {
+  padding: 0 20px; /* Horizontal padding only */
+}
+
+/* The quote text paragraph */
+.quote-text {
+  font-size: 0.95rem;       /* Normal body size */
+  color: var(--text-black); /* Dark */
+  line-height: 1.7;         /* Comfortable */
+  margin-bottom: 20px;      /* Space before author */
+}
+
+/* Author row: avatar + name */
+.quote-author-row {
+  display: flex;       /* Horizontal row */
+  align-items: center; /* Vertically centered */
+  gap: 10px;           /* Space between avatar and text */
+}
+
+/* Circular avatar placeholder */
+.author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  flex-shrink: 0;
+}         
+
+/* Author name text */
+.author-name {
+  font-size: 0.82rem; /* Small */
+  font-weight: 600;   /* Semi-bold */
+  display: block;     /* Own line */
+}
+
+
+/* ============================================================
+   PERSON WORKING BANNER
+   Full-width photo strip between testimonials and smart finance
+   ============================================================ */
+.person-working-img {
+  width: 100%;                  /* Full page width */
+  height: 380px;                /* Fixed height strip */
+  object-fit: cover;            /* Crops to fill without distortion */
+  object-position: center 20%; /* Focuses upper part of the image */
+  display: block;               /* Removes default inline image gap */
+}
+
+
+/* ============================================================
+   SMART FINANCE SECTION
+   Two-column: heading left, 3 audience cards right
+   ============================================================ */
+.smart-finance-section {
+  padding: 80px 40px;              /* Top/bottom, sides */
+  background-color: var(--white);  /* White background */
+}
+
+/* Two-column grid */
+.smart-finance-layout {
+  display: grid;                    /* CSS Grid */
+  grid-template-columns: 1fr 1.8fr; /* Left narrower, right wider */
+  gap: 60px;                        /* Space between columns */
+  align-items: start;               /* Top-aligned */
+}
+
+/* Left column heading */
+.smart-finance-left h2 {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2.2rem;                /* Large */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Dark */
+  line-height: 1.2;                 /* Tight */
+  margin-bottom: 16px;              /* Space below */
+}
+
+/* Left column paragraph */
+.smart-finance-left p {
+  font-size: 0.82rem;       /* Small */
+  color: var(--text-body);  /* Dark grey */
+  line-height: 1.65;        /* Comfortable */
+}
+
+/* Three equal columns for audience cards */
+.audience-grid {
+  display: grid;                         /* CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 28px;                             /* Space between */
+}
+
+/* Individual audience card */
+.audience-card {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Stacks icon, title, text */
+  gap: 10px;              /* Space between items */
+}
+
+/* Small icon box */
+.audience-icon {
+  width: 36px;                         /* Fixed size */
+  height: 36px;                        /* Equal — square */
+  background-color: var(--mint-light); /* Pale mint */
+  border-radius: 6px;                  /* Slightly rounded */
+  display: flex;                       /* Centers emoji inside */
+  align-items: center;                 /* Vertically */
+  justify-content: center;             /* Horizontally */
+  font-size: 1rem;                     /* Emoji size */
+}
+
+/* Audience card heading */
+.audience-card h4 {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 0.95rem;               /* Normal size */
+  font-weight: 600;                 /* Semi-bold */
+  color: var(--text-black);         /* Dark */
+}
+
+/* Audience card description */
+.audience-card p {
+  font-size: 0.78rem;       /* Small */
+  color: var(--text-muted); /* Grey */
+  line-height: 1.6;         /* Comfortable */
+}
+
+
+/* ============================================================
+   CUSTOM PLAN SECTION
+   Dark green card — text left, stackwood image right
+   ============================================================ */
+.custom-plan-section {
+  padding: 0 40px 60px; /* No top, 40px sides, 60px bottom */
+}
+
+/* Dark green rounded card */
+.custom-plan-card {
+  background-color: var(--dark-green); /* Dark green */
+  border-radius: var(--radius-card);   /* Rounded */
+  padding: 50px 56px;                  /* Inner spacing */
+  display: flex;                       /* Side-by-side */
+  align-items: center;                 /* Vertically centered */
+  justify-content: space-between;      /* Text left, image right */
+  gap: 40px;                           /* Gap */
+}
+
+/* Left text content */
+.custom-plan-text {
+  max-width: 360px; /* Prevents text from pushing image out */
+}
+
+/* "A custom built plan for you" heading */
+.custom-plan-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 1.6rem;                /* Medium-large */
+  font-weight: 700;                 /* Bold */
+  color: var(--white);              /* White on dark green */
+  line-height: 1.3;                 /* Slightly tight */
+  margin-bottom: 14px;              /* Space below */
+}
+
+/* Description paragraph */
+.custom-plan-desc {
+  font-size: 0.8rem;               /* Small */
+  color: rgba(255,255,255,0.75);   /* Semi-transparent white */
+  line-height: 1.65;               /* Comfortable */
+  margin-bottom: 24px;             /* Space before button */
+}
+
+/* "Learn more" white pill button on dark green card */
+.btn-white-pill {
+  display: inline-block;             /* Allows padding */
+  background-color: var(--white);    /* White */
+  color: var(--dark-green);          /* Dark green text */
+  font-family: var(--font-body);     /* Body font */
+  font-size: 0.8rem;                 /* Small */
+  font-weight: 600;                  /* Semi-bold */
+  padding: 10px 22px;                /* Inner spacing */
+  border-radius: var(--radius-pill); /* Pill */
+  border: none;                      /* No border */
+  cursor: pointer;                   /* Pointer */
+  text-decoration: none;             /* No underline */
+  transition: opacity 0.2s;         /* Smooth hover */
+}
+
+.btn-white-pill:hover {
+  opacity: 0.88; /* Slight dimming on hover */
+}
+
+/* Stackwood SVG on the right */
+.custom-plan-img {
+  width: 280px;         /* Fixed width */
+  height: auto;         /* Auto height */
+  object-fit: contain;  /* No cropping */
+  flex-shrink: 0;       /* Never shrinks */
+}
+
+
+/* ============================================================
+   BELIEF SECTION
+   Large centered quote + CTA button on white background
+   ============================================================ */
+.belief-section {
+  text-align: center;              /* Centers everything */
+  padding: 90px 60px;              /* Generous top/bottom */
+  background-color: var(--white);  /* White */
+}
+
+/* Large centered statement text */
+.belief-text {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2rem;                  /* Large */
+  font-weight: 600;                 /* Semi-bold */
+  color: var(--text-black);         /* Dark */
+  max-width: 680px;                 /* Limits reading width */
+  margin: 0 auto 32px;              /* Centered, space below */
+  line-height: 1.4;                 /* Comfortable for large text */
+}
+
+
+/* ============================================================
+   FOOTER
+   Dark green bar — logo left, links + button right
+   ============================================================ */
+.footer {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  padding: 28px 40px;                  /* Inner spacing */
+  display: flex;                       /* Row layout */
+  justify-content: space-between;      /* Logo left, items right */
+  align-items: center;                 /* Vertically centered */
+}
+
+/* "Noble Finances" in the footer */
+.footer-logo {
+  font-family: var(--font-body); /* Body font */
+  font-size: 0.88rem;            /* Small */
+  font-weight: 500;              /* Medium */
+}
+
+/* Right side wrapper */
+.footer-right {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 20px;           /* Space between items */
+}
+
+/* Footer text links */
+.footer-link {
+  color: rgba(255,255,255,0.75); /* Semi-transparent white */
+  text-decoration: none;         /* No underline */
+  font-size: 0.8rem;             /* Small */
+  transition: color 0.2s;       /* Smooth hover */
+}
+
+.footer-link:hover {
+  color: var(--white); /* Full white on hover */
+}
+
+/* Footer "Book an appointment" transparent button */
+.footer-btn {
+  background-color: rgba(255,255,255,0.15); /* Transparent white */
+  color: var(--white);                      /* White text */
+  font-family: var(--font-body);            /* Body font */
+  font-size: 0.78rem;                       /* Small */
+  font-weight: 500;                         /* Medium */
+  padding: 8px 16px;                        /* Inner spacing */
+  border-radius: var(--radius-pill);        /* Pill */
+  border: none;                             /* No border */
+  cursor: pointer;                          /* Pointer */
+  text-decoration: none;                    /* No underline */
+  transition: background 0.2s;             /* Smooth hover */
+}
+
+.footer-btn:hover {
+  background-color: rgba(255,255,255,0.25); /* Brighter on hover */
+}
+
+
+/* ============================================================
+   FOOTER BOTTOM BAR
+   Very dark strip — tagline left, copyright right
+   ============================================================ */
+.footer-bottom {
+  background-color: var(--darker-green); /* Near-black green */
+  padding: 14px 40px;                    /* Slim padding */
+  display: flex;                         /* Row */
+  justify-content: space-between;        /* Left and right */
+  align-items: center;                   /* Vertically centered */
+}
+
+/* Tagline text */
+.footer-tagline {
+  font-size: 0.72rem;             /* Very small */
+  color: rgba(255,255,255,0.45);  /* Faded white */
+}
+
+/* Copyright text */
+.footer-rights {
+  font-size: 0.72rem;             /* Very small */
+  color: rgba(255,255,255,0.45);  /* Faded white */
+}
+
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   Elements start hidden and below — JS adds .visible to trigger
+   ============================================================ */
+
+/* Initial invisible state */
+.reveal {
+  opacity: 0;                  /* Fully transparent */
+  transform: translateY(24px); /* Shifted 24px below final position */
+  transition: opacity 0.55s ease, transform 0.55s ease; /* Smooth reveal */
+}
+
+/* Visible state — added by script.js when element enters viewport */
+.reveal.visible {
+  opacity: 1;               /* Fully visible */
+  transform: translateY(0); /* Back to original position */
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile adjustments for the landing page
+   ============================================================ */
+@media (max-width: 860px) {
+
+  /* Stack hero vertically on small screens */
+  .hero {
+    flex-direction: column; /* Text and globe stacked */
+    text-align: center;     /* Center all text */
+    padding: 50px 24px;     /* Reduced padding */
+  }
+
+  /* Shrink headline on mobile */
+  .hero-title { font-size: 2.2rem; }
+
+  /* Reduce globe size */
+  .hero-globe { width: 180px; }
+
+  /* Reduce service cards padding */
+  .service-cards-wrapper { padding: 0 24px 40px; }
+
+  /* Stack service card content vertically */
+  .service-card,
+  .bookkeeping-card {
+    flex-direction: column;  /* Stack text and image */
+    align-items: flex-start; /* Left-align */
+    margin-left: 0;          /* Remove offset */
+    margin-right: 0;         /* Remove offset */
+  }
+
+  /* Images go full width on mobile */
+  .card-img,
+  .bookkeeping-img { width: 100%; max-width: 200px; }
+
+  /* Stack testimonials vertically */
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* Stack smart finance section */
+  .smart-finance-layout { grid-template-columns: 1fr; }
+
+  /* Stack audience cards */
+  .audience-grid { grid-template-columns: 1fr; }
+
+  /* Stack custom plan card */
+  .custom-plan-card { flex-direction: column; text-align: center; }
+
+  /* Stack footer */
+  .footer {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  /* Stack footer bottom */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  /* Shrink belief text on mobile */
+  .belief-text { font-size: 1.4rem; }
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is a modern HTML5 document -->
+
+<html lang="en">
+<!-- lang="en" tells browsers and screen readers the page is in English -->
+
+<head>
+  <!-- <head> holds metadata, links to CSS, and the page title — not visible content -->
+
+  <meta charset="UTF-8" />
+  <!-- UTF-8 encoding ensures all characters, symbols, and emoji display correctly -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Makes the page scale correctly on phones and tablets instead of zooming out -->
+
+  <title>Noble Finances</title>
+  <!-- Text shown on the browser tab -->
+
+  <link rel="stylesheet" href="homepage.css" />
+  <!-- Links this HTML to the external CSS file — all styling lives in styles.css -->
+
+</head>
+
+<body>
+<!-- <body> contains everything the user sees on the page -->
+
+
+  <!-- ============================================================
+       NAVBAR
+       Sticky top bar: logo on left, "Services" link + "Book" button on right
+       ============================================================ -->
+  <nav class="navbar">
+  <!-- <nav> is a semantic HTML element for navigation bars -->
+
+    <a href="homepage.html" class="navbar-logo">Noble Finances</a>
+    <!-- Brand name — clicking it scrolls to the top of the page -->
+
+    <div class="navbar-right">
+    <!-- Wrapper div for the right side items -->
+
+      <a href="services.html" class="navbar-link">Services</a>
+      <!-- Anchor link — clicking scrolls to the section with id="services" -->
+
+      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
+      <!-- CTA button linking to the booking/contact section -->
+
+    </div>
+    <!-- End of navbar-right -->
+
+  </nav>
+  <!-- End of navbar -->
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Large mint-green area at the top: headline, subtitle, button, globe
+       ============================================================ -->
+  <section class="hero reveal">
+  <!-- class="reveal" means JavaScript will animate this in when scrolled to -->
+
+    <div class="hero-text">
+    <!-- Left side: all text content -->
+
+      <h1 class="hero-title">Financial Clarity You Can Trust</h1>
+      <!-- Main page headline — largest text on the page -->
+
+      <p class="hero-subtitle">Trusted financial guidance for every stage of life and business since 1987</p>
+      <!-- Short supporting sentence below the headline -->
+
+      <a href="appointment.html" class="btn-dark">Connect with our experts</a>
+      <!-- Primary call-to-action button -->
+
+    </div>
+    <!-- End of hero-text -->
+
+    <img src="Globe.png" alt="Globe illustration showing global financial reach" class="hero-globe" />
+    <!-- Globe PNG image on the right side of the hero -->
+    <!-- alt= text describes the image for screen readers and if the image fails to load -->
+
+  </section>
+  <!-- End of hero -->
+
+
+  <!-- ============================================================
+       SERVICES INTRO
+       Centered text block: "Let us handle the numbers..."
+       ============================================================ -->
+  <section class="services-intro reveal" id="services">
+  <!-- id="services" is the anchor target for the navbar "Services" link -->
+
+    <span class="section-eyebrow">Services</span>
+    <!-- Small uppercase label above the heading — matches Figma "Services" label -->
+
+    <h2 class="services-heading">Let us handle the numbers, so you can handle your success.</h2>
+    <!-- Section main heading -->
+
+    <p class="services-sub">Serving Individuals and small businesses since 1987</p>
+    <!-- Supporting subtitle text -->
+
+    <a href="appointment.html" class="btn-green-pill">Schedule a call</a>
+    <!-- Button below the heading -->
+
+  </section>
+  <!-- End of services intro -->
+
+
+  <!-- ============================================================
+       SERVICE CARDS
+       Two large cards: Tax Preparation and IRS Audit
+       ============================================================ -->
+  <div class="service-cards-wrapper">
+  <!-- Wrapper div that holds both service cards and controls their spacing -->
+
+
+    <!-- ---- Card 1: Tax Preparation & Filing ---- -->
+    <div class="service-card reveal">
+    <!-- Individual service card — pale mint background, image on right -->
+
+      <div class="card-text">
+      <!-- Left portion: title, description, tags -->
+
+        <h3 class="card-title">Tax Preparation &amp; Filing</h3>
+        <!-- &amp; is the HTML code for the "&" character — required inside HTML text -->
+
+        <p class="card-desc">Accurately prepare and file personal and business tax returns to maximize deductions and ensure compliance.</p>
+        <!-- Short service description -->
+
+        <div class="card-tags">
+        <!-- Row of tag badges below the description -->
+
+          <span class="tag">1099 forms</span>
+          <!-- Badge: topic covered by this service -->
+
+          <span class="tag">Dependents</span>
+          <!-- Badge: another topic -->
+
+          <span class="tag">Travel Taxes</span>
+          <!-- Badge: another topic -->
+
+        </div>
+        <!-- End of card-tags -->
+
+      </div>
+      <!-- End of card-text -->
+
+      <img src="coins.png" alt="Coins on a phone illustration" class="card-img" />
+      <!-- Coins image on the RIGHT side of this card -->
+
+    </div>
+    <!-- End of Card 1 -->
+
+
+    <!-- ---- Card 2: IRS Audit Assistance ---- -->
+    <div class="service-card card-offset reveal">
+    <!-- "card-offset" gives this card a slightly different bg and indented position -->
+
+      <div class="card-text">
+      <!-- Left portion: title, description, tags -->
+
+        <h3 class="card-title">IRS Audit Assistance</h3>
+        <!-- Card heading -->
+
+        <p class="card-desc">Offer expert guidance and representation to resolve tax audits and disputes with confidence.</p>
+        <!-- Short description -->
+
+        <div class="card-tags">
+        <!-- Tag badges -->
+
+          <span class="tag">1099 taxes</span>
+          <span class="tag">Dependents</span>
+          <span class="tag">Travel Taxes</span>
+
+        </div>
+        <!-- End of card-tags -->
+
+      </div>
+      <!-- End of card-text -->
+
+      <img src="Bar chart.svg" alt="Bar chart and graphs illustration" class="card-img" />
+      <!-- Bar chart SVG image on the RIGHT side of this card -->
+
+    </div>
+    <!-- End of Card 2 -->
+
+
+  </div>
+  <!-- End of service-cards-wrapper -->
+
+
+  <!-- ============================================================
+       BOOKKEEPING CARD
+       Separate wider card: image on LEFT, text on right
+       ============================================================ -->
+  <div class="bookkeeping-card reveal">
+  <!-- Sits outside the service-cards-wrapper so it spans wider -->
+
+    <img src="Safe Box.png" alt="Safe box with coins illustration" class="bookkeeping-img" />
+    <!-- Safe box image on the LEFT side — reversed layout from cards above -->
+
+    <div class="card-text">
+    <!-- Right side: title, description, tags -->
+
+      <h3 class="card-title">Bookkeeping &amp; Accounting</h3>
+      <!-- Card heading -->
+
+      <p class="card-desc">Maintain organized financial records and provide clear reports to support business growth and financial health.</p>
+      <!-- Short description -->
+
+      <div class="card-tags">
+      <!-- Tag badges -->
+
+        <span class="tag">1099 forms</span>
+        <span class="tag">Dependents</span>
+        <span class="tag">Find Taxes</span>
+
+      </div>
+      <!-- End of card-tags -->
+
+    </div>
+    <!-- End of card-text -->
+
+  </div>
+  <!-- End of bookkeeping card -->
+
+
+  <!-- ============================================================
+       TESTIMONIALS SECTION
+       "Hear From Our Happy Clients" — client list left, quote right
+       ============================================================ -->
+  <section class="testimonials-section reveal">
+
+    <h2 class="testimonials-title">Hear From Our Happy Clients</h2>
+    <!-- Section heading centered above the two-column layout -->
+
+    <div class="testimonials-grid">
+    <!-- Two-column grid: narrow client list on left, quote box on right -->
+
+
+      <!-- ---- Left Column: Client Name List ---- -->
+      <div class="client-list">
+      <!-- Stacked vertical list of clickable client names -->
+
+        <!-- Client 1: Graphic Designer (active/highlighted by default) -->
+        <div class="client-item active" onclick="switchTestimonial(this, 0)">
+        <!-- onclick calls switchTestimonial() in script.js, passing this element and index 0 -->
+        <!-- "active" class = dark green highlight on page load -->
+
+          <span class="client-profession">Fullstack Developer</span>
+          <!-- Client job title -->
+
+          <span class="client-location">Lagos, Nigeria</span>
+          <!-- Client location -->
+
+        </div>
+        <!-- End of client item 1 -->
+
+        <hr class="client-divider" />
+        <!-- Thin horizontal line separating client items -->
+
+        <!-- Client 2: Commercial Photographer -->
+        <div class="client-item" onclick="switchTestimonial(this, 1)">
+        <!-- Clicking this switches to testimonial index 1 -->
+
+          <span class="client-profession">Data Analyst</span>
+          <span class="client-location">Dublin, Ireland</span>
+
+        </div>
+        <!-- End of client item 2 -->
+
+        <hr class="client-divider" />
+        <!-- Separator line -->
+
+        <!-- Client 3: Stylist -->
+        <div class="client-item" onclick="switchTestimonial(this, 2)">
+        <!-- Clicking this switches to testimonial index 2 -->
+
+          <span class="client-profession">Fashion Designer</span>
+          <span class="client-location">Ibadan, Nigeria</span>
+
+        </div>
+        <!-- End of client item 3 -->
+
+      </div>
+      <!-- End of client-list -->
+
+
+      <!-- ---- Right Column: Quote Box ---- -->
+      <div class="quote-box">
+      <!-- Displays the testimonial for the currently selected client -->
+
+        <p class="quote-text" id="quote-text">
+        <!-- id="quote-text" allows script.js to update this text on click -->
+
+          "Managing my taxes as a freelancer used to be overwhelming, but Noble Finance made it effortless."
+
+        </p>
+        <!-- Default quote on page load (matches Graphic Designer, index 0) -->
+
+        <div class="quote-author-row">
+        <!-- Author row: circular avatar + name -->
+
+          <img class="author-avatar" id="author-avatar" src="007.jpg" alt="Client avatar" />
+          <!-- Small circle div styled as an avatar via CSS border-radius: 50% -->
+
+          <div>
+          <!-- Text block beside the avatar -->
+
+            <span class="author-name" id="author-name">Samuel A, Fullstack Developer</span>
+            <!-- id="author-name" lets script.js swap this when client changes -->
+
+          </div>
+          <!-- End of author text block -->
+
+        </div>
+        <!-- End of quote-author-row -->
+
+      </div>
+      <!-- End of quote-box -->
+
+
+    </div>
+    <!-- End of testimonials-grid -->
+
+  </section>
+  <!-- End of testimonials section -->
+
+
+  <!-- ============================================================
+       PERSON WORKING — Full-width photo banner
+       ============================================================ -->
+  <img
+    src="Person working.png"
+    alt="Person working on a laptop at a wooden desk"
+    class="person-working-img"
+  />
+  <!-- Full-width image that visually separates testimonials from smart finance -->
+  <!-- Styled with object-fit: cover in CSS to fill the height without distortion -->
+
+
+  <!-- ============================================================
+       SMART FINANCE SECTION
+       "Smart Finance for everyone" — heading left, 3 audience cards right
+       ============================================================ -->
+  <section class="smart-finance-section reveal">
+
+    <div class="smart-finance-layout">
+    <!-- Two-column CSS Grid: heading block left, audience cards right -->
+
+
+      <!-- ---- Left: Heading + Description ---- -->
+      <div class="smart-finance-left">
+
+        <h2>Smart Finance for everyone</h2>
+        <!-- Section heading — large serif font -->
+
+        <p>At Noble Finance, we believe that financial confidence should be accessible to everyone — whether you're a solo entrepreneur, managing a growing family, or running a small business.</p>
+        <!-- Supporting paragraph text -->
+
+      </div>
+      <!-- End of smart-finance-left -->
+
+
+      <!-- ---- Right: Three Audience Cards ---- -->
+      <div class="audience-grid">
+      <!-- Three equal columns inside the right side of the layout -->
+
+
+        <!-- Card: For Freelancers -->
+        <div class="audience-card">
+
+          <div class="audience-icon">💼</div>
+          <!-- Small icon box — briefcase emoji representing freelancers -->
+
+          <h4>For Freelancers</h4>
+          <!-- Card heading -->
+
+          <p>Stay in charge of your income with seamless expense tracking, automated deductions, and smart tax tools — so you can focus on doing what you love.</p>
+          <!-- Card body text -->
+
+        </div>
+        <!-- End of freelancers card -->
+
+
+        <!-- Card: For Families -->
+        <div class="audience-card">
+
+          <div class="audience-icon">🏠</div>
+          <!-- House emoji for families -->
+
+          <h4>For Families</h4>
+
+          <p>From budgeting tools to tax-saving insights, we help you plan for the future, maximize refunds, and keep your household finances running smoothly.</p>
+
+        </div>
+        <!-- End of families card -->
+
+
+        <!-- Card: For Small Businesses -->
+        <div class="audience-card">
+
+          <div class="audience-icon">📊</div>
+          <!-- Chart emoji for businesses -->
+
+          <h4>For Small Businesses</h4>
+
+          <p>Effortless bookkeeping, payroll solutions, and expert tax support — so you can spend less time on finances and more time growing your business.</p>
+
+        </div>
+        <!-- End of small businesses card -->
+
+
+      </div>
+      <!-- End of audience-grid -->
+
+    </div>
+    <!-- End of smart-finance-layout -->
+
+  </section>
+  <!-- End of smart finance section -->
+
+
+  <!-- ============================================================
+       CUSTOM PLAN SECTION
+       Dark green card: heading + description + button on left, stackwood image on right
+       ============================================================ -->
+  <section class="custom-plan-section reveal">
+
+    <div class="custom-plan-card">
+    <!-- Dark green rounded card container -->
+
+      <div class="custom-plan-text">
+      <!-- Left text content block -->
+
+        <h3 class="custom-plan-title">A custom built plan for you</h3>
+        <!-- Card heading — white text on dark green -->
+
+        <p class="custom-plan-desc">At Noble Finances, we believe that tax filing should be seamless, accurate, and stress-free. Our approach is centered on three key pillars: simplicity, accuracy, and security.</p>
+        <!-- Description paragraph — semi-transparent white text -->
+
+        <a href="#appointment" class="btn-white-pill">Learn more</a>
+        <!-- White pill button sitting on the dark green background -->
+
+      </div>
+      <!-- End of custom-plan-text -->
+
+      <img src="stackwood.svg" alt="Stacked wooden blocks illustration" class="custom-plan-img" />
+      <!-- Stackwood SVG image on the RIGHT of the dark green card -->
+
+    </div>
+    <!-- End of custom-plan-card -->
+
+  </section>
+  <!-- End of custom plan section -->
+
+
+  <!-- ============================================================
+       BELIEF SECTION
+       Large centered quote on white background + CTA button
+       ============================================================ -->
+  <section class="belief-section reveal" id="appointment">
+  <!-- id="appointment" is the anchor all "Book / Connect" buttons link to -->
+
+    <p class="belief-text">We believe that tax filing should be seamless, accurate, and stress-free. Get started with Noble Finance today!</p>
+    <!-- Large centered serif statement -->
+
+    <a href="#appointment" class="btn-dark">Connect with our experts</a>
+    <!-- Dark green pill CTA button -->
+
+  </section>
+  <!-- End of belief section -->
+
+
+  <!-- ============================================================
+       FOOTER
+       Dark green bar: brand name left, links + button right
+       ============================================================ -->
+  <footer class="footer">
+
+    <span class="footer-logo">Noble Finances</span>
+    <!-- Brand name in the left of the footer -->
+
+    <div class="footer-right">
+    <!-- Right side items: text link + button -->
+
+      <a href="services.html" class="footer-link">Services</a>
+      <!-- Text link back to services section -->
+
+      <a href="appointment.html" class="footer-btn">Book an appointment</a>
+      <!-- Transparent pill button in the footer -->
+
+    </div>
+    <!-- End of footer-right -->
+
+  </footer>
+  <!-- End of footer -->
+
+
+  <!-- ============================================================
+       FOOTER BOTTOM BAR
+       Very dark strip: tagline left, copyright right
+       ============================================================ -->
+  <div class="footer-bottom">
+
+    <span class="footer-tagline">Finance starts for every stage of life and business since 1987</span>
+    <!-- Small tagline text on the left -->
+
+    <span class="footer-rights">© 2025 All rights reserved</span>
+    <!-- Copyright text on the right -->
+
+  </div>
+  <!-- End of footer-bottom -->
+
+
+  <!-- ============================================================
+       SCRIPT TAG — loads JavaScript LAST
+       Placing it here ensures all HTML elements above already exist
+       in the DOM before script.js tries to find and work with them
+       ============================================================ -->
+  <script src="script.js"></script>
+  <!-- Links to the external script.js file where all JS logic lives -->
+
+
+</body>
+<!-- End of visible page content -->
+
+</html>
+<!-- End of HTML document -->

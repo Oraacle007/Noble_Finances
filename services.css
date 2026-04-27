@@ -1,0 +1,602 @@
+/* ============================================================
+   services.css — Noble Finances SERVICES PAGE Stylesheet
+   This file styles services.html ONLY.
+   Linked from services.html via <link rel="stylesheet" href="services.css">
+   ============================================================ */
+
+
+/* ===================== GOOGLE FONTS IMPORT ===================== */
+/* Loads Playfair Display (headings) and DM Sans (body) from Google */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+
+/* ===================== CSS VARIABLES ===================== */
+/* Defined on :root so they work anywhere in this stylesheet */
+:root {
+  --mint: #b8e5c8;           /* Bright mint — hero bg, goodbye right panel */
+  --mint-light: #e8f5ee;     /* Pale mint — belief cards */
+  --dark-green: #2d4a3e;     /* Deep green — buttons, footer, goodbye left panel */
+  --darker-green: #1e3329;   /* Even darker — footer bottom bar, hover states */
+  --white: #ffffff;          /* Pure white — page background, step image boxes */
+  --text-black: #111111;     /* Near-black — main headings */
+  --text-body: #444444;      /* Dark grey — body paragraphs */
+  --text-muted: #777777;     /* Medium grey — eyebrows, step descriptions */
+  --step-number-color: #e0e0e0; /* Very light grey — the large decorative numbers */
+  --font-heading: 'Playfair Display', Georgia, serif; /* Serif for headings */
+  --font-body: 'DM Sans', sans-serif;                 /* Sans-serif for body */
+  --radius-pill: 999px;  /* Pill/capsule button shape */
+  --radius-card: 20px;   /* Standard rounded card */
+  --radius-box: 16px;    /* Slightly smaller — for step image boxes */
+}
+
+
+/* ===================== CSS RESET ===================== */
+/* Strips all browser default spacing for a clean slate */
+*, *::before, *::after {
+  margin: 0;               /* No outer spacing */
+  padding: 0;              /* No inner spacing */
+  box-sizing: border-box;  /* Width includes padding and border */
+}
+
+
+/* ===================== BASE ===================== */
+html {
+  scroll-behavior: smooth; /* Smooth scroll for anchor (#id) links */
+}
+
+body {
+  font-family: var(--font-body);   /* DM Sans as page default */
+  background-color: var(--white);  /* White background */
+  color: var(--text-black);        /* Default near-black text */
+  line-height: 1.6;                /* Comfortable line spacing */
+  overflow-x: hidden;              /* No horizontal scroll */
+}
+
+
+/* ============================================================
+   NAVBAR
+   Sticky top bar — logo left, services link + book button right
+   ============================================================ */
+.navbar {
+  display: flex;                   /* Row layout */
+  justify-content: space-between;  /* Logo left, items right */
+  align-items: center;             /* Vertically centered */
+  padding: 18px 40px;              /* Top/bottom and left/right padding */
+  background-color: var(--white);  /* White background */
+  position: sticky;                /* Sticks to top of viewport on scroll */
+  top: 0;                          /* Sticks at very top */
+  z-index: 999;                    /* Always above other content */
+}
+
+/* "Noble Finances" brand name */
+.navbar-logo {
+  font-family: var(--font-body); /* DM Sans */
+  font-size: 0.9rem;             /* Small — matches Figma */
+  font-weight: 500;              /* Medium weight */
+  color: var(--text-black);      /* Dark text */
+  text-decoration: none;         /* No underline */
+}
+
+/* Right side wrapper */
+.navbar-right {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 24px;           /* Space between items */
+}
+
+/* "Services" text link */
+.navbar-link {
+  font-size: 0.85rem;        /* Small */
+  font-weight: 400;          /* Normal */
+  color: var(--text-black);  /* Dark */
+  text-decoration: none;     /* No underline */
+  transition: opacity 0.2s;  /* Smooth fade on hover */
+}
+
+.navbar-link:hover {
+  opacity: 0.6; /* Dims on hover */
+}
+
+/* "Book an appointment" pill button */
+.navbar-btn {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.82rem;                  /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 9px 18px;                   /* Inner spacing */
+  border: none;                        /* No border */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  cursor: pointer;                     /* Hand cursor */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease;    /* Smooth hover */
+}
+
+.navbar-btn:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+}
+
+
+/* ============================================================
+   SHARED BUTTON — .btn-dark
+   Used in hero AND goodbye section
+   ============================================================ */
+.btn-dark {
+  display: inline-block;               /* Allows padding on <a> tags */
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  font-family: var(--font-body);       /* Body font */
+  font-size: 0.8rem;                   /* Small */
+  font-weight: 500;                    /* Medium bold */
+  padding: 10px 20px;                  /* Inner spacing */
+  border-radius: var(--radius-pill);   /* Pill shape */
+  border: none;                        /* No border */
+  cursor: pointer;                     /* Hand cursor */
+  text-decoration: none;               /* No underline */
+  transition: background 0.2s ease;    /* Smooth hover */
+}
+
+.btn-dark:hover {
+  background-color: var(--darker-green); /* Darker on hover */
+}
+
+
+/* ============================================================
+   SERVICES HERO
+   White background — large headline left, PC+coins image right
+   ============================================================ */
+.services-hero {
+  background-color: var(--white);  /* White — not mint like the landing page */
+  padding: 60px 40px 50px;         /* Top, sides, bottom */
+  display: flex;                   /* Side-by-side */
+  align-items: center;             /* Vertically centered */
+  justify-content: space-between;  /* Text left, image right */
+  min-height: 280px;               /* Minimum height */
+}
+
+/* Left text block */
+.services-hero-text {
+  max-width: 440px; /* Prevents text spreading too wide */
+}
+
+/* "Your Financial Journey, Clearly Defined" */
+.services-hero-title {
+  font-family: var(--font-heading); /* Playfair Display serif */
+  font-size: 3rem;                  /* Large headline */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Near-black */
+  line-height: 1.15;                /* Tight spacing */
+  margin-bottom: 14px;              /* Space below heading */
+}
+
+/* Subtitle paragraph */
+.services-hero-subtitle {
+  font-size: 0.82rem;       /* Small body text */
+  color: var(--text-body);  /* Dark grey */
+  margin-bottom: 24px;      /* Space before button */
+  line-height: 1.6;         /* Readable */
+}
+
+/* PC with coins 3D illustration */
+.services-hero-img {
+  width: 300px;         /* Fixed width */
+  height: auto;         /* Auto height */
+  object-fit: contain;  /* No cropping */
+  flex-shrink: 0;       /* Never shrinks */
+}
+
+
+/* ============================================================
+   IMAGE BREAK
+   Full-width skyscraper photo — visual divider between sections
+   ============================================================ */
+.image-break {
+  width: 100%;                    /* Spans full page width */
+  height: 300px;                  /* Fixed height */
+  object-fit: cover;              /* Fills area without distortion */
+  object-position: center center; /* Focuses center of photo */
+  display: block;                 /* Removes inline image gap */
+}
+
+
+/* ============================================================
+   ONBOARDING SECTION
+   "A simple onboarding" + 3 large numbered steps
+   This is the section that needed the most attention.
+   Each step: HUGE number far left | text middle | white image box right
+   ============================================================ */
+.onboarding-section {
+  padding: 70px 40px 90px;         /* Top, sides, bottom */
+  background-color: var(--white);  /* White background */
+}
+
+/* Small "How it works" label */
+.onboarding-eyebrow {
+  display: block;           /* Own line */
+  font-size: 0.72rem;       /* Very small */
+  color: var(--text-muted); /* Grey */
+  letter-spacing: 1px;      /* Slightly spaced */
+  margin-bottom: 10px;      /* Space below */
+}
+
+/* "A simple onboarding" main heading */
+.onboarding-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2.2rem;                /* Large */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Dark */
+  margin-bottom: 6px;               /* Small gap */
+}
+
+/* "Serving individuals and small businesses since 1987" */
+.onboarding-sub {
+  font-size: 0.8rem;        /* Small */
+  color: var(--text-muted); /* Grey */
+  margin-bottom: 60px;      /* Generous space before the steps start */
+}
+
+/* Container for all 3 step rows */
+.steps-list {
+  display: flex;          /* Vertical stack */
+  flex-direction: column; /* Stacked top to bottom */
+  gap: 0;                 /* No gap — each step has its own padding */
+}
+
+/* ---- INDIVIDUAL STEP ROW ---- */
+/* Layout: [large number] [text block] [image box] */
+/* The key insight from the Figma: number is HUGE, image box is WHITE and TALL */
+.step-row {
+  display: grid;                                /* CSS Grid for 3-column layout */
+  grid-template-columns: 100px 1fr 280px;       /* Number | Text | Image — wide image box */
+  align-items: center;                          /* Vertically centered */
+  gap: 40px;                                    /* Space between all 3 columns */
+  padding: 50px 0;                              /* Tall top/bottom padding — matches Figma spacing */
+  border-bottom: 1px solid #f2f2f2;             /* Very faint separator line */
+}
+
+/* No line after the very last step */
+.step-row:last-child {
+  border-bottom: none; /* Removes separator from final step */
+}
+
+/* THE LARGE DECORATIVE NUMBER — "1", "2", "3" */
+/* This is the most important visual element of the steps section */
+.step-number {
+  font-family: var(--font-heading);          /* Playfair Display serif for the numbers */
+  font-size: 8rem;                           /* VERY large — dominant visual presence */
+  font-weight: 700;                          /* Bold */
+  color: var(--step-number-color);           /* Light grey — #e0e0e0, subtle not distracting */
+  line-height: 1;                            /* No extra line height */
+  user-select: none;                         /* Prevents accidental text selection */
+  letter-spacing: -4px;                      /* Slightly tighter letter spacing for big numbers */
+}
+
+/* Middle column — step title and description */
+.step-text {
+  max-width: 300px; /* Limits line length for comfortable reading */
+}
+
+/* Step heading e.g. "Our tax advisors write you a plan" */
+.step-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 1.1rem;                /* Medium */
+  font-weight: 600;                 /* Semi-bold */
+  color: var(--text-black);         /* Dark */
+  margin-bottom: 10px;              /* Space below heading */
+  line-height: 1.35;                /* Comfortable for multi-line headings */
+}
+
+/* Step description paragraph */
+.step-desc {
+  font-size: 0.8rem;        /* Small */
+  color: var(--text-muted); /* Grey — muted, not dominant */
+  line-height: 1.65;        /* Comfortable */
+}
+
+/* RIGHT COLUMN — white rounded box containing the step image */
+/* Key from Figma: the box is WHITE with a subtle shadow, NOT mint green */
+.step-img-box {
+  background-color: var(--white);              /* WHITE box — not mint */
+  border-radius: var(--radius-box);            /* Rounded corners */
+  width: 280px;                                /* Fixed width — matches Figma */
+  height: 200px;                               /* Fixed height — tall enough for images */
+  display: flex;                               /* Centers image */
+  align-items: center;                         /* Vertically centered */
+  justify-content: center;                     /* Horizontally centered */
+  overflow: hidden;                            /* Clips image to box bounds */
+  flex-shrink: 0;                              /* Never shrinks */
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07); /* Very subtle shadow — lifts box slightly */
+}
+
+/* The image inside the step box */
+.step-img {
+  width: 100%;             /* Fills the box width */
+  height: 100%;            /* Fills the box height */
+  object-fit: cover;       /* Crops to fill — images have black bg so this works well */
+  object-position: center; /* Centers the crop focus */
+}
+
+
+/* ============================================================
+   WE BELIEVE SECTION
+   "We believe:" + 3 stacked pale mint cards, centered
+   ============================================================ */
+.believe-section {
+  padding: 80px 40px 90px;         /* Top, sides, bottom */
+  background-color: var(--white);  /* White background */
+  text-align: center;              /* Centers all content */
+}
+
+/* Small "Philosophy" eyebrow label */
+.believe-eyebrow {
+  display: block;           /* Own line */
+  font-size: 0.72rem;       /* Very small */
+  color: var(--text-muted); /* Grey */
+  letter-spacing: 1px;      /* Slightly spaced */
+  margin-bottom: 10px;      /* Space below */
+}
+
+/* "We believe:" heading */
+.believe-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2.4rem;                /* Large */
+  font-weight: 700;                 /* Bold */
+  color: var(--text-black);         /* Dark */
+  margin-bottom: 40px;              /* Space before cards */
+}
+
+/* Narrow centered vertical stack of cards */
+.believe-cards {
+  display: flex;          /* Vertical layout */
+  flex-direction: column; /* Stacked top to bottom */
+  gap: 16px;              /* Space between cards */
+  max-width: 500px;       /* Narrow — matches Figma's centered column */
+  margin: 0 auto;         /* Centers the column horizontally */
+}
+
+/* Individual pale mint belief card */
+.believe-card {
+  background-color: var(--mint-light); /* Pale mint */
+  border-radius: var(--radius-card);   /* Rounded */
+  padding: 32px 36px;                  /* Inner spacing */
+  text-align: center;                  /* Centers text inside */
+}
+
+/* Small "01", "02", "03" number inside card */
+.believe-number {
+  display: block;           /* Own line */
+  font-size: 0.72rem;       /* Very small */
+  color: var(--text-muted); /* Grey */
+  margin-bottom: 12px;      /* Space below */
+  letter-spacing: 1px;      /* Slightly spaced */
+}
+
+/* Belief statement text */
+.believe-text {
+  font-size: 0.92rem;       /* Small-medium */
+  color: var(--text-body);  /* Dark grey */
+  line-height: 1.7;         /* Comfortable */
+  max-width: 360px;         /* Limits line length */
+  margin: 0 auto;           /* Centers the text block */
+}
+
+
+/* ============================================================
+   SAY GOODBYE SECTION
+   Two panels: dark green left (text + button), mint right (calculator)
+   ============================================================ */
+.goodbye-section {
+  display: flex;         /* Side-by-side panels */
+  align-items: stretch;  /* Both panels same height */
+  min-height: 320px;     /* Minimum height */
+  overflow: hidden;      /* Clips content to section */
+}
+
+/* Left panel — dark green, holds heading and button */
+.goodbye-left {
+  flex: 1;                 /* Takes all remaining space */
+  background-color: var(--dark-green); /* Dark green */
+  padding: 70px 60px;      /* Generous inner spacing */
+  display: flex;           /* Flex column */
+  flex-direction: column;  /* Stack heading and button vertically */
+  justify-content: center; /* Vertically center the content */
+}
+
+/* "Say goodbye to taxes of the past" */
+.goodbye-title {
+  font-family: var(--font-heading); /* Serif */
+  font-size: 2.6rem;                /* Large */
+  font-weight: 700;                 /* Bold */
+  color: var(--white);              /* White text on dark green */
+  line-height: 1.2;                 /* Tight */
+  margin-bottom: 32px;              /* Space before button */
+}
+
+/* Right panel — mint green, holds calculator image */
+.goodbye-right {
+  width: 400px;                      /* Fixed width for the mint panel */
+  background-color: var(--mint);     /* Bright mint green */
+  display: flex;                     /* Centers the image */
+  align-items: center;               /* Vertically centered */
+  justify-content: center;           /* Horizontally centered */
+  flex-shrink: 0;                    /* Never shrinks */
+  padding: 48px;                     /* Padding around image */
+}
+
+/* Calculator image */
+.goodbye-img {
+  width: 210px;         /* Fixed width */
+  height: auto;         /* Auto height */
+  object-fit: contain;  /* Full image, no cropping */
+}
+
+
+/* ============================================================
+   FOOTER
+   Dark green bar — logo left, links + button right
+   ============================================================ */
+.footer {
+  background-color: var(--dark-green); /* Dark green */
+  color: var(--white);                 /* White text */
+  padding: 28px 40px;                  /* Inner spacing */
+  display: flex;                       /* Row */
+  justify-content: space-between;      /* Logo left, items right */
+  align-items: center;                 /* Vertically centered */
+}
+
+/* "Noble Finances" in the footer */
+.footer-logo {
+  font-family: var(--font-body); /* Body font */
+  font-size: 0.88rem;            /* Small */
+  font-weight: 500;              /* Medium */
+}
+
+/* Right side items wrapper */
+.footer-right {
+  display: flex;       /* Row */
+  align-items: center; /* Centered */
+  gap: 20px;           /* Space between items */
+}
+
+/* Footer text links */
+.footer-link {
+  color: rgba(255,255,255,0.75); /* Semi-transparent white */
+  text-decoration: none;         /* No underline */
+  font-size: 0.8rem;             /* Small */
+  transition: color 0.2s;       /* Smooth hover */
+}
+
+.footer-link:hover {
+  color: var(--white); /* Full white on hover */
+}
+
+/* "Book an Appointment" transparent button */
+.footer-btn {
+  background-color: rgba(255,255,255,0.15); /* Subtle transparent white */
+  color: var(--white);                      /* White text */
+  font-family: var(--font-body);            /* Body font */
+  font-size: 0.78rem;                       /* Small */
+  font-weight: 500;                         /* Medium */
+  padding: 8px 16px;                        /* Inner spacing */
+  border-radius: var(--radius-pill);        /* Pill */
+  border: none;                             /* No border */
+  cursor: pointer;                          /* Pointer */
+  text-decoration: none;                    /* No underline */
+  transition: background 0.2s;             /* Smooth hover */
+}
+
+.footer-btn:hover {
+  background-color: rgba(255,255,255,0.25); /* Brighter on hover */
+}
+
+
+/* ============================================================
+   FOOTER BOTTOM BAR
+   Very dark strip — tagline left, copyright right
+   ============================================================ */
+.footer-bottom {
+  background-color: var(--darker-green); /* Near-black green */
+  padding: 14px 40px;                    /* Slim padding */
+  display: flex;                         /* Row */
+  justify-content: space-between;        /* Left and right */
+  align-items: center;                   /* Centered */
+}
+
+/* Left tagline */
+.footer-tagline {
+  font-size: 0.72rem;             /* Very small */
+  color: rgba(255,255,255,0.45);  /* Faded white */
+}
+
+/* Right copyright */
+.footer-rights {
+  font-size: 0.72rem;             /* Very small */
+  color: rgba(255,255,255,0.45);  /* Faded white */
+}
+
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   JS adds .visible when element enters the viewport
+   ============================================================ */
+
+/* Initial invisible state — element is transparent and shifted down */
+.reveal {
+  opacity: 0;                  /* Fully transparent */
+  transform: translateY(24px); /* 24px below its final position */
+  transition: opacity 0.55s ease, transform 0.55s ease; /* Smooth transition */
+}
+
+/* Visible state — JS adds this class when element is on screen */
+.reveal.visible {
+  opacity: 1;               /* Fully visible */
+  transform: translateY(0); /* Returns to original position */
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile adjustments for services page
+   ============================================================ */
+@media (max-width: 860px) {
+
+  /* Stack hero vertically */
+  .services-hero {
+    flex-direction: column; /* Stack text and image */
+    text-align: center;     /* Center text */
+    padding: 50px 24px;     /* Reduced padding */
+  }
+
+  /* Smaller headline on mobile */
+  .services-hero-title { font-size: 2.2rem; }
+
+  /* Smaller hero image */
+  .services-hero-img { width: 220px; }
+
+  /* Shorter image break */
+  .image-break { height: 200px; }
+
+  /* Reduce section padding */
+  .onboarding-section { padding: 50px 24px 60px; }
+
+  /* Switch steps to 2-column — number and text side by side, image below */
+  .step-row {
+    grid-template-columns: 70px 1fr; /* Number | Text */
+    grid-template-rows: auto auto;   /* Second row for image */
+    gap: 20px;                       /* Reduced gap */
+    padding: 36px 0;                 /* Reduced vertical padding */
+  }
+
+  /* Shrink the large number on mobile */
+  .step-number { font-size: 5rem; }
+
+  /* Image box spans full width below text on mobile */
+  .step-img-box {
+    grid-column: 1 / -1; /* Spans both columns */
+    width: 100%;         /* Full width */
+    height: 180px;       /* Reduced height */
+  }
+
+  /* Stack goodbye panels vertically */
+  .goodbye-section { flex-direction: column; }
+
+  /* Full width right panel on mobile */
+  .goodbye-right { width: 100%; padding: 40px 24px; }
+
+  /* Smaller goodbye heading */
+  .goodbye-title { font-size: 2rem; }
+
+  /* Stack footer */
+  .footer {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  /* Stack footer bottom */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
