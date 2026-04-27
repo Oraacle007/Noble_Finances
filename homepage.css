@@ -952,7 +952,8 @@ body {
   border-radius: 20px;                      /* Rounded corners */
   padding: 48px 52px;                       /* Generous inner spacing */
   width: 100%;                              /* Responsive */
-  max-width: 500px;                         /* Max width */
+  max-width: 500px; 
+  max-height: 500px;                        /* Max width */
   position: relative;                       /* For close button */
   box-shadow: 0 24px 80px rgba(0,0,0,0.2); /* Deep shadow */
   transform: translateY(30px);              /* Starts below final position */
@@ -1095,9 +1096,11 @@ body {
   gap: 10px;
 }
 
-/* Input and textarea shared styles */
+/* Input and textarea shared styles — also covers .modal-input class */
 .modal-form input,
-.modal-form textarea {
+.modal-form .modal-input,
+.modal-form textarea,
+.modal-form .modal-textarea {
   width: 100%;
   padding: 11px 14px;
   border: 1.5px solid #d8ebe0;

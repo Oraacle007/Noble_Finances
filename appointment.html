@@ -1,303 +1,334 @@
 <!DOCTYPE html>
-<!-- Declares this as a modern HTML5 document -->
-
 <html lang="en">
-<!-- lang="en" = English language page -->
 
 <head>
-  <!-- Head holds metadata and links — not visible to users -->
-
   <meta charset="UTF-8" />
-  <!-- UTF-8 encoding — all text and characters display correctly -->
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Makes the page scale correctly on phones and tablets -->
-
   <title>Book an Appointment — Noble Finances</title>
-  <!-- Browser tab title -->
-
   <link rel="stylesheet" href="appointment.css"/>
-  <!-- Links this page to its own dedicated stylesheet -->
-
 </head>
 
 <body>
-<!-- Body contains all visible content -->
-
 
   <!-- ============================================================
        NAVBAR
-       Transparent background — sits on top of the mint page bg
-       Logo and "Services" in dark green, "Book" button dark green pill
        ============================================================ -->
   <nav class="navbar">
-  <!-- Semantic nav element -->
-
     <a href="index.html" class="navbar-logo">Noble Finances</a>
-    <!-- Logo — links back to landing page -->
-
     <div class="navbar-right">
-    <!-- Right side items wrapper -->
-
       <a href="services.html" target="_blank" class="navbar-link">Services</a>
-      <!-- Links to services page -->
-
-      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
-      <!-- This IS the appointment page so button links to # (current page) -->
-
+      <!-- Triggers the booking form modal -->
+      <button class="navbar-btn" onclick="openBookingModal()">Book an appointment</button>
     </div>
-    <!-- End navbar-right -->
-
   </nav>
-  <!-- End navbar -->
 
 
   <!-- ============================================================
        HERO SECTION
-       Two columns on the mint green page background:
-       Left — darker mint rounded card with clock image
-       Right — "Book an appointment now" heading + subtitle + button
        ============================================================ -->
   <section class="hero-section reveal">
-  <!-- reveal = scroll animation fades this in -->
 
-    <!-- ---- LEFT COLUMN: Clock Card ---- -->
     <div class="clock-card">
-    <!-- Darker mint rounded square card — holds the clock image -->
-
       <img
         src="clock.png"
         alt="Wall clock representing appointment timing"
         class="clock-img"
       />
-      <!-- Clock image centered inside the darker mint card -->
-      <!-- Image has black bg — object-fit: contain shows it cleanly -->
-
     </div>
-    <!-- End clock card -->
 
-
-    <!-- ---- RIGHT COLUMN: Text Content ---- -->
     <div class="hero-text">
-    <!-- Heading, subtitle, and Contact Us button -->
-
       <h1 class="hero-title">Book an appointment now</h1>
-      <!-- Large serif heading — dominant text on the page -->
-
       <p class="hero-subtitle">Serving individuals and small businesses since 1987</p>
-      <!-- Supporting subtitle below the heading -->
 
-      <button class="btn-contact" onclick="openModal()">Contact Us</button>
-      <!-- "Contact Us" button — onclick calls openModal() in script.js -->
-      <!-- This triggers the classy slide-in contact modal -->
+      <!-- Opens the booking form modal -->
+      <button class="btn-contact" onclick="openBookingModal()">Book an Appointment</button>
 
+      <!-- Opens the connect with experts page -->
+      <a href="connect.html" class="btn-connect">Connect with Experts</a>
     </div>
-    <!-- End hero text -->
 
   </section>
-  <!-- End hero section -->
 
 
   <!-- ============================================================
-       CONTACT MODAL
-       Full-screen overlay with a white sliding modal box.
-       Hidden by default — becomes visible when user clicks "Contact Us".
-       Contains contact details + a short message form.
+       BOOKING FORM MODAL
+       Full-screen overlay with a scrollable appointment form.
+       Powered by Formspree — submissions go to abiola.adeeko17@gmail.com
        ============================================================ -->
-  <div class="modal-overlay" id="contactModal">
-  <!-- id="contactModal" lets JS find and open/close this overlay -->
-  <!-- Starts with opacity: 0 and visibility: hidden (see CSS) -->
-  <!-- JS adds class="open" to make it visible -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-box booking-modal-box">
 
-    <div class="modal-box">
-    <!-- The white rounded modal box that slides up from below -->
-
-      <!-- Close button in the top right corner -->
-      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
-      <!-- &#x2715; = × symbol — onclick calls closeModal() in script.js -->
+      <button class="modal-close" onclick="closeBookingModal()">&#x2715;</button>
 
       <span class="modal-eyebrow">Noble Finances</span>
-      <!-- Small uppercase label at top of modal -->
-
-      <h2 class="modal-title">Get in Touch</h2>
-      <!-- Modal main heading -->
-
-      <p class="modal-subtitle">We'd love to hear from you. Reach out and our team will respond within 24 hours.</p>
-      <!-- Supporting description text -->
+      <h2 class="modal-title">Book an Appointment</h2>
+      <p class="modal-subtitle">Fill in your details and we'll confirm your appointment within 24 hours.</p>
 
       <hr class="modal-divider" />
-      <!-- Thin decorative line between heading area and contact details -->
 
-      <!-- ---- Contact Detail Rows ---- -->
-      <div class="modal-contact-details">
-      <!-- Stacked rows each showing an icon + label + value -->
+      <!-- Formspree form — replace YOUR_FORM_ID with your Formspree endpoint -->
+      <form
+        class="booking-form"
+        action="https://formspree.io/f/mojyoekl"
+        method="POST"
+        onsubmit="handleBookingSubmit(event)"
+      >
+        <!-- Hidden field so Formspree sends reply to the user -->
+        <input type="hidden" name="_replyto" value="abiola.adeeko17@gmail.com" />
+        <input type="hidden" name="_subject" value="New Appointment Request — Noble Finances" />
 
-        <!-- Email Row -->
-        <div class="contact-detail-row">
-        <!-- One row: icon circle | label + value stack -->
-
-          <div class="contact-icon">📧</div>
-          <!-- Mint circle with email emoji icon -->
-
-          <div class="contact-detail-text">
-          <!-- Label and value stacked vertically -->
-
-            <span class="contact-label">Email</span>
-            <!-- Small uppercase label "EMAIL" -->
-
-            <a href="mailto:abiola.adeeko17@gmail.com" class="contact-value">abiola.adeeko17@gmail.com</a>
-            <!-- Clickable email link — mailto: opens the user's email app -->
-
+        <!-- Row: First name + Last name -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="e.g. Abiola" required />
           </div>
-          <!-- End contact-detail-text -->
-
-        </div>
-        <!-- End email row -->
-
-        <!-- Phone Row -->
-        <div class="contact-detail-row">
-
-          <div class="contact-icon">📞</div>
-          <!-- Phone emoji icon -->
-
-          <div class="contact-detail-text">
-
-            <span class="contact-label">Phone</span>
-            <!-- Small "PHONE" label -->
-
-            <a href="tel:+2348137592363" class="contact-value">+234 813 759 2363</a>
-            <!-- Clickable phone link — tel: dials number on mobile devices -->
-
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="e.g. Adeeko" required />
           </div>
-
         </div>
-        <!-- End phone row -->
 
-        <!-- Location Row -->
-        <div class="contact-detail-row">
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="bookingEmail">Email Address <span class="required">*</span></label>
+          <input type="email" id="bookingEmail" name="email" class="form-input" placeholder="your@email.com" required />
+        </div>
 
-          <div class="contact-icon">📍</div>
-          <!-- Location pin emoji -->
+        <!-- Phone -->
+        <div class="form-group">
+          <label class="form-label" for="bookingPhone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="bookingPhone" name="phone" class="form-input" placeholder="+234 800 000 0000" required />
+        </div>
 
-          <div class="contact-detail-text">
+        <!-- Service type -->
+        <div class="form-group">
+          <label class="form-label" for="serviceType">Service Needed <span class="required">*</span></label>
+          <select id="serviceType" name="service" class="form-input form-select" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="Tax Preparation & Filing">Tax Preparation &amp; Filing</option>
+            <option value="IRS Audit Assistance">IRS Audit Assistance</option>
+            <option value="Bookkeeping & Accounting">Bookkeeping &amp; Accounting</option>
+            <option value="Financial Planning">Financial Planning</option>
+            <option value="Business Advisory">Business Advisory</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-            <span class="contact-label">Office</span>
-            <!-- Small "OFFICE" label -->
-
-            <span class="contact-value">Block 7, Plot 12, Odolameso Lay-Out, Ijebu-Imusin, Ogun State, Nigeria</span>
-            <!-- Office address — not a link, just text -->
-
+        <!-- Row: Preferred date + Preferred time -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="preferredDate">Preferred Date <span class="required">*</span></label>
+            <input type="date" id="preferredDate" name="preferredDate" class="form-input" required />
           </div>
-
+          <div class="form-group">
+            <label class="form-label" for="preferredTime">Preferred Time <span class="required">*</span></label>
+            <select id="preferredTime" name="preferredTime" class="form-input form-select" required>
+              <option value="" disabled selected>Select time…</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+            </select>
+          </div>
         </div>
-        <!-- End location row -->
 
-      </div>
-      <!-- End modal-contact-details -->
+        <!-- Meeting format -->
+        <div class="form-group">
+          <label class="form-label">Meeting Format <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="meetingFormat" value="In-Person" required />
+              <span class="radio-box">
+                <span class="radio-icon">🏢</span>
+                In-Person
+              </span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="meetingFormat" value="Phone Call" />
+              <span class="radio-box">
+                <span class="radio-icon">📞</span>
+                Phone Call
+              </span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="meetingFormat" value="Video Call" />
+              <span class="radio-box">
+                <span class="radio-icon">🎥</span>
+                Video Call
+              </span>
+            </label>
+          </div>
+        </div>
 
-      <!-- ---- Message Form ---- -->
-      <p class="modal-form-title">Send us a message</p>
-      <!-- Small heading above the form fields -->
+        <!-- Additional notes -->
+        <div class="form-group">
+          <label class="form-label" for="bookingNotes">Additional Notes</label>
+          <textarea id="bookingNotes" name="notes" class="form-input form-textarea" placeholder="Anything we should know before the appointment?"></textarea>
+        </div>
 
-      <div class="modal-form">
-      <!-- Form fields — using a div not <form> to keep things simple -->
-      <!-- In a real project this would submit to a backend server -->
+        <!-- Submit -->
+        <button type="submit" class="booking-submit-btn" id="bookingSubmitBtn">
+          <span id="submitBtnText">Confirm Appointment</span>
+          <span id="submitBtnSpinner" class="btn-spinner" style="display:none;">⏳ Sending…</span>
+        </button>
 
-        <input
-          type="text"
-          placeholder="Your full name"
-          class="modal-input"
-        />
-        <!-- Name input field — placeholder shows until user types -->
+        <!-- Success message (hidden by default) -->
+        <div class="booking-success" id="bookingSuccess" style="display:none;">
+          <span class="success-icon">✅</span>
+          <div>
+            <strong>Appointment request sent!</strong>
+            <p>We'll reach out to confirm your booking within 24 hours.</p>
+          </div>
+        </div>
 
-        <input
-          type="email"
-          placeholder="Your email address"
-          class="modal-input"
-        />
-        <!-- Email input — type="email" validates email format on submit -->
-
-        <textarea
-          placeholder="How can we help you?"
-          class="modal-textarea"
-        ></textarea>
-        <!-- Message textarea — taller than inputs, resize: none keeps layout clean -->
-
-        <button class="modal-submit" onclick="submitForm()">Send Message</button>
-        <!-- Submit button — full width pill — onclick calls submitForm() in script.js -->
-
-      </div>
-      <!-- End modal-form -->
+      </form>
 
     </div>
-    <!-- End modal-box -->
-
   </div>
-  <!-- End modal-overlay -->
+
+
+  <!-- ============================================================
+       CONTACT MODAL (original — keep for "Contact Us" in other contexts)
+       ============================================================ -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      <span class="modal-eyebrow">Noble Finances</span>
+      <h2 class="modal-title">Get in Touch</h2>
+      <p class="modal-subtitle">We'd love to hear from you. Reach out and our team will respond within 24 hours.</p>
+      <hr class="modal-divider" />
+      <div class="modal-contact-details">
+        <div class="contact-detail-row">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail-text">
+            <span class="contact-label">Email</span>
+            <a href="mailto:abiola.adeeko17@gmail.com" class="contact-value">abiola.adeeko17@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-detail-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <span class="contact-label">Phone</span>
+            <a href="tel:+2348137592363" class="contact-value">+234 813 759 2363</a>
+          </div>
+        </div>
+        <div class="contact-detail-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <span class="contact-label">Office</span>
+            <span class="contact-value">Block 7, Plot 12, Odolameso Lay-Out, Ijebu-Imusin, Ogun State, Nigeria</span>
+          </div>
+        </div>
+      </div>
+      <p class="modal-form-title">Send us a message</p>
+      <div class="modal-form">
+        <input type="text" placeholder="Your full name" class="modal-input" />
+        <input type="email" placeholder="Your email address" class="modal-input" />
+        <textarea placeholder="How can we help you?" class="modal-textarea"></textarea>
+        <button class="modal-submit" onclick="submitForm()">Send Message</button>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ============================================================
        FOOTER
-       Large dark green footer — more spacious than other pages
-       Matches the Figma with big "Noble Finances" text and tall body
        ============================================================ -->
   <footer class="footer">
-
     <span class="footer-logo">Noble Finances</span>
-    <!-- Large serif brand name on the left — bigger than other pages -->
-
     <div class="footer-right">
-    <!-- Right side: services link + appointment button -->
-
       <a href="services.html" class="footer-link">Services</a>
-      <!-- Services page link -->
-
-      <a href="#" class="footer-btn">Book An Appointment</a>
-      <!-- Button links to current page -->
-
+      <button class="footer-btn" onclick="openBookingModal()">Book An Appointment</button>
     </div>
-    <!-- End footer-right -->
-
   </footer>
-  <!-- End footer -->
 
   <div class="footer-spacer" style="background-color: #2d4a3e;"></div>
-  <!-- Empty spacer div inside the dark green area — creates the tall footer body in Figma -->
 
-  <!-- ============================================================
-       FOOTER BOTTOM BAR
-       Two small text lines on the left, copyright on the right
-       ============================================================ -->
   <div class="footer-bottom">
-
     <div class="footer-bottom-left">
-    <!-- Left: two stacked text lines -->
-
       <span class="footer-tagline">Financial Clarity You Can Trust</span>
-      <!-- First line -->
-
       <span class="footer-tagline-sub">Trusted financial guidance for every stage of life and business since 1987</span>
-      <!-- Second line — slightly more faded -->
-
     </div>
-    <!-- End footer-bottom-left -->
-
     <span class="footer-rights">© 2025 All Rights Reserved</span>
-    <!-- Copyright on the right -->
-
   </div>
-  <!-- End footer-bottom -->
 
-
-  <!-- ============================================================
-       SCRIPT
-       Loaded last — after all HTML elements are in the DOM
-       ============================================================ -->
   <script src="script.js"></script>
-  <!-- Shared script.js — scroll reveal + modal functions -->
+  <script>
+    /* ---- Booking Modal ---- */
+    function openBookingModal() {
+      document.getElementById('bookingModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    // Close on overlay click
+    document.getElementById('bookingModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBookingModal();
+    });
+
+    /* ---- Formspree submit handler ---- */
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('bookingSubmitBtn');
+      const textSpan = document.getElementById('submitBtnText');
+      const spinner = document.getElementById('submitBtnSpinner');
+      const success = document.getElementById('bookingSuccess');
+
+      // Show loading state
+      textSpan.style.display = 'none';
+      spinner.style.display = 'inline';
+      btn.disabled = true;
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(res => {
+        if (res.ok) {
+          form.reset();
+          btn.style.display = 'none';
+          success.style.display = 'flex';
+        } else {
+          textSpan.textContent = 'Something went wrong. Try again.';
+          textSpan.style.display = 'inline';
+          spinner.style.display = 'none';
+          btn.disabled = false;
+        }
+      })
+      .catch(() => {
+        textSpan.textContent = 'Network error. Try again.';
+        textSpan.style.display = 'inline';
+        spinner.style.display = 'none';
+        btn.disabled = false;
+      });
+    }
+
+    /* ---- Set min date to today ---- */
+    const dateInput = document.getElementById('preferredDate');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+
+    /* ---- Radio option highlight ---- */
+    document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.radio-box').forEach(b => b.classList.remove('selected'));
+        radio.nextElementSibling.classList.add('selected');
+      });
+    });
+  </script>
 
 </body>
-<!-- End body -->
-
 </html>
-<!-- End document -->

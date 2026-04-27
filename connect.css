@@ -1,0 +1,527 @@
+/* ============================================================
+   connect.css — Noble Finances CONNECT PAGE Stylesheet
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --mint-page: #c5ecd4;
+  --mint-light: #e8f7ef;
+  --dark-green: #2d4a3e;
+  --darker-green: #1e3329;
+  --white: #ffffff;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-pill: 999px;
+  --radius-card: 20px;
+
+  /* Channel colors */
+  --wa-green: #25D366;
+  --wa-dark: #128C7E;
+  --phone-blue: #2563eb;
+  --phone-light: #dbeafe;
+  --email-amber: #d97706;
+  --email-light: #fef3c7;
+  --office-purple: #7c3aed;
+  --office-light: #ede9fe;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--mint-page);
+  color: var(--dark-green);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px;
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.navbar-logo {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-link {
+  font-size: 0.88rem;
+  color: var(--dark-green);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.navbar-link:hover { opacity: 0.65; }
+
+.navbar-btn {
+  background-color: var(--dark-green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.navbar-btn:hover { background-color: var(--darker-green); }
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.connect-hero {
+  text-align: center;
+  padding: 72px 40px 64px;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: rgba(45, 74, 62, 0.12);
+  color: var(--dark-green);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 24px;
+  border: 1px solid rgba(45, 74, 62, 0.2);
+}
+
+.connect-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--dark-green);
+  line-height: 1.05;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.connect-hero-title em {
+  font-style: italic;
+  color: var(--darker-green);
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated underline on the italic word */
+.connect-hero-title em::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--dark-green), var(--wa-green));
+  border-radius: 2px;
+  animation: lineSlide 0.8s ease 0.3s both;
+}
+
+@keyframes lineSlide {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+.connect-hero-sub {
+  font-size: 1rem;
+  color: #4a6b5a;
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   OPTIONS GRID
+   ============================================================ */
+.options-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 920px;
+  margin: 0 auto 80px;
+  padding: 0 40px;
+}
+
+/* ---- Shared card styles ---- */
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 24px;
+  padding: 36px 32px 32px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.28s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: cardIn 0.5s ease both;
+  cursor: pointer;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.option-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.14);
+}
+
+/* Glow effect on hover */
+.option-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.option-card:hover .option-glow { opacity: 1; }
+
+/* ---- Icon wrapper ---- */
+.option-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.option-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---- Text content ---- */
+.option-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+
+.option-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.option-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  opacity: 0.8;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.option-number,
+.option-address {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+
+.option-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-top: auto;
+}
+
+
+/* ============================================================
+   CHANNEL-SPECIFIC THEMES
+   ============================================================ */
+
+/* WhatsApp — deep forest on mint */
+.option-whatsapp {
+  background: linear-gradient(145deg, #1a3d2e 0%, #0f2a1e 100%);
+  color: #d4f5e0;
+  box-shadow: 0 8px 40px rgba(20, 60, 40, 0.3);
+}
+.option-whatsapp .option-icon-wrap {
+  background-color: var(--wa-green);
+  color: var(--white);
+}
+.option-whatsapp .option-title { color: var(--white); }
+.option-whatsapp .option-number,
+.option-whatsapp .option-cta { color: var(--wa-green); }
+.option-whatsapp .option-glow {
+  background: radial-gradient(circle at 80% 20%, rgba(37, 211, 102, 0.12) 0%, transparent 70%);
+}
+
+/* Phone — crisp white card */
+.option-phone {
+  background: var(--white);
+  color: #1e3a5f;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #e2eaf2;
+}
+.option-phone .option-icon-wrap {
+  background-color: var(--phone-light);
+  color: var(--phone-blue);
+}
+.option-phone .option-title { color: #1e3a5f; }
+.option-phone .option-number { color: var(--phone-blue); }
+.option-phone .option-cta { color: var(--phone-blue); }
+.option-phone .option-glow {
+  background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+}
+
+/* Email — warm amber card */
+.option-email {
+  background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+  color: #78350f;
+  box-shadow: 0 8px 40px rgba(217, 119, 6, 0.12);
+  border: 1.5px solid #fde68a;
+}
+.option-email .option-icon-wrap {
+  background-color: #fbbf24;
+  color: var(--white);
+}
+.option-email .option-title { color: #78350f; }
+.option-email .option-cta { color: var(--email-amber); }
+.option-email .option-glow {
+  background: radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+}
+
+/* In-Person — soft purple */
+.option-inperson {
+  background: linear-gradient(145deg, #f5f3ff 0%, #ede9fe 100%);
+  color: #4c1d95;
+  box-shadow: 0 8px 40px rgba(124, 58, 237, 0.12);
+  border: 1.5px solid #ddd6fe;
+}
+.option-inperson .option-icon-wrap {
+  background-color: var(--office-purple);
+  color: var(--white);
+}
+.option-inperson .option-title { color: #4c1d95; }
+.option-inperson .option-address { color: var(--office-purple); }
+.option-inperson .option-cta { color: var(--office-purple); }
+.option-inperson .option-glow {
+  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+}
+
+
+/* ============================================================
+   CTA STRIP
+   ============================================================ */
+.cta-strip {
+  background-color: var(--dark-green);
+  padding: 60px 40px;
+}
+
+.cta-strip-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-strip-text h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.cta-strip-text p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.cta-strip-btn {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--dark-green);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.cta-strip-btn:hover {
+  background-color: var(--mint-page);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--dark-green);
+  color: var(--white);
+  padding: 60px 48px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--white); }
+
+.footer-btn {
+  background-color: rgba(255,255,255,0.12);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.footer-btn:hover { background-color: rgba(255,255,255,0.22); }
+
+.footer-spacer {
+  height: 100px;
+  background-color: var(--dark-green);
+}
+
+.footer-bottom {
+  background-color: var(--dark-green);
+  padding: 20px 48px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-tagline {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.footer-tagline-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.footer-rights {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+}
+
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .navbar { padding: 18px 20px; }
+  .connect-hero { padding: 52px 24px 48px; }
+  .options-section {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 16px;
+  }
+  .option-card { padding: 28px 24px; }
+  .cta-strip { padding: 48px 24px; }
+  .cta-strip-inner { flex-direction: column; align-items: flex-start; }
+  .footer { flex-direction: column; gap: 20px; padding: 40px 24px 0; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 24px;
+  }
+}

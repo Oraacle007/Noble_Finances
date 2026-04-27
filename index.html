@@ -41,7 +41,7 @@
       <a href="services.html" class="navbar-link">Services</a>
       <!-- Anchor link — clicking scrolls to the section with id="services" -->
 
-      <button class="navbar-btn" onclick="openChatroomModal()">Book an appointment</button>
+      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
       <!-- Opens the live chat modal to connect with a financial expert -->
 
     </div>
@@ -67,7 +67,7 @@
       <p class="hero-subtitle">Trusted financial guidance for every stage of life and business since 1987</p>
       <!-- Short supporting sentence below the headline -->
 
-      <button class="btn-dark" onclick="openContactModal()">Connect with our experts</button>
+      <a href="connect.html" class="btn-dark">Connect with our experts</a>
       <!-- Opens the contact details modal — phone, email, address -->
 
     </div>
@@ -97,7 +97,7 @@
     <p class="services-sub">Serving Individuals and small businesses since 1987</p>
     <!-- Supporting subtitle text -->
 
-    <button class="btn-green-pill" onclick="openChatroomModal()">Schedule a call</button>
+    <a href="appointment.html" class="btn-green-pill">Schedule a call</a>
     <!-- Opens the chatroom to connect with an expert -->
 
   </section>
@@ -437,7 +437,7 @@
         <p class="custom-plan-desc">At Noble Finances, we believe that tax filing should be seamless, accurate, and stress-free. Our approach is centered on three key pillars: simplicity, accuracy, and security.</p>
         <!-- Description paragraph — semi-transparent white text -->
 
-        <a href="#appointment" class="btn-white-pill">Learn more</a>
+        <a href="services.html" class="btn-white-pill">Learn more</a>
         <!-- White pill button sitting on the dark green background -->
 
       </div>
@@ -463,7 +463,7 @@
     <p class="belief-text">We believe that tax filing should be seamless, accurate, and stress-free. Get started with Noble Finance today!</p>
     <!-- Large centered serif statement -->
 
-    <button class="btn-dark" onclick="openContactModal()">Connect with our experts</button>
+    <a href="connect.html" class="btn-dark">Connect with our experts</a>
     <!-- Opens the contact modal with phone, email and address -->
 
   </section>
@@ -485,7 +485,7 @@
       <a href="services.html" class="footer-link">Services</a>
       <!-- Text link back to services section -->
 
-      <button class="footer-btn" onclick="openChatroomModal()">Book an appointment</button>
+      <a href="appointment.html" class="footer-btn">Book an appointment</a>
       <!-- Opens chatroom modal -->
 
     </div>
@@ -584,13 +584,13 @@
       <div class="modal-form">
       <!-- Contact form fields -->
 
-        <input type="text" placeholder="Your full name" />
+        <input type="text" placeholder="Your full name" class="modal-input" />
         <!-- Name field -->
 
-        <input type="email" placeholder="Your email address" />
+        <input type="email" placeholder="Your email address" class="modal-input" />
         <!-- Email field -->
 
-        <textarea placeholder="How can we help you?"></textarea>
+        <textarea placeholder="How can we help you?" class="modal-textarea"></textarea>
         <!-- Message field -->
 
         <button class="modal-submit" onclick="submitContactForm()">Send Message</button>
