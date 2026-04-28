@@ -67,16 +67,28 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
+  position: fixed;
+  top: 18px;
+  right: 40px;
+  z-index: 200;
 }
 
 .navbar-link {
-  font-size: 0.88rem;
-  font-weight: 400;
-  color: var(--dark-green);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+ background-color: var(--dark-green);
+  font-size: 0.85rem;         /* Small text */
+  font-weight: 400;           /* Normal weight */
+  color: var(--white);   /* Dark text */
+  text-decoration: none;      /* No underline */
+  transition: background 0.2s;   /* Smooth color on hover */
+  border: none;                /* No border */
+  padding: 9px 18px;            /* Inner spacing */
+  border-radius: var(--radius-pill);   /* Fully rounded pill shape */
+  cursor: pointer;              /* Shows hand cursor on hover */
 }
-@media (min-width: 641px) { .navbar-link:hover { opacity: 0.65; } }
+@media (min-width: 641px) {
+.navbar-link:hover { 
+  background-color: var(--darker-green); } 
+}
 
 .navbar-btn {
   background-color: var(--dark-green);
@@ -791,11 +803,9 @@ input[type="date"].form-input {
   .hamburger { display: flex; }
 
   .navbar-right {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    position: fixed;
     top: 0;
     right: 0;
     height: 100vh;

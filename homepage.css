@@ -97,15 +97,20 @@ body {
 
 /* "Services" text link */
 .navbar-link {
+  background-color: var(--dark-green);
   font-size: 0.85rem;         /* Small text */
   font-weight: 400;           /* Normal weight */
-  color: var(--text-black);   /* Dark text */
+  color: var(--white);   /* Dark text */
   text-decoration: none;      /* No underline */
-  transition: opacity 0.2s;   /* Smooth fade on hover */
+  transition: background 0.2s;   /* Smooth color on hover */
+  border: none;                /* No border */
+  padding: 9px 18px;            /* Inner spacing */
+  border-radius: var(--radius-pill);   /* Fully rounded pill shape */
+  cursor: pointer;              /* Shows hand cursor on hover */
 }
 
 .navbar-link:hover {
-  opacity: 0.6; /* Dims the link when hovered */
+   background-color: var(--darker-green); /* Slightly darker green on hover */
 }
 
 /* "Book an appointment" green pill button */
@@ -1393,7 +1398,9 @@ body {
   z-index: 600;
   position: relative;
 }
-.hamburger:hover { background: rgba(45, 74, 62, 0.08); }
+.hamburger:hover { 
+  background: rgba(45, 74, 62, 0.08); 
+}
 
 .hamburger span {
   display: block;
@@ -1450,10 +1457,11 @@ body {
   .navbar-link {
     font-size: 1.1rem;
     font-weight: 500;
-    color: var(--dark-green);
+    color: white;
+    text-align: center;
     text-decoration: none;
     padding: 10px 16px;
-    border-radius: 10px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     width: 100%;
@@ -1462,7 +1470,7 @@ body {
 
   .navbar-link:hover,
   .navbar-link:active {
-    background-color: var(--dark-green);
+    background-color: var(--darker-green);
     color: #ffffff !important;
     opacity: 1 !important;
   }

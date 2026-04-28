@@ -90,34 +90,35 @@ body {
   display: flex;       /* Row */
   align-items: center; /* Centered */
   gap: 24px;           /* Space between items */
+  position: fixed;
+  top: 18px;
+  right: 40px;
+  z-index: 200;
 }
 
 /* "Services" text link */
 .navbar-link {
-  font-size: 0.85rem;        /* Small */
-  font-weight: 400;          /* Normal */
-  color: var(--text-black);  /* Dark */
-  text-decoration: none;     /* No underline */
-  transition: opacity 0.2s, color 0.2s;
-  position: relative;
+   background-color: var(--dark-green);
+  font-size: 0.85rem;         /* Small text */
+  font-weight: 400;           /* Normal weight */
+  color: var(--white);   /* Dark text */
+  text-decoration: none;      /* No underline */
+  transition: background 0.2s;   /* Smooth color on hover */
+  border: none;                /* No border */
+  padding: 9px 18px;            /* Inner spacing */
+  border-radius: var(--radius-pill);   /* Fully rounded pill shape */
+  cursor: pointer;              /* Shows hand cursor on hover */
 }
+
 
 @media (min-width: 641px) {
-  .navbar-link:hover { opacity: 0.7; color: var(--dark-green); }
+  .navbar-link:hover {
+   background-color: var(--darker-green); /* Slightly darker green on hover */ 
+  text-decoration: none;}
 }
 
-/* Subtle underline slide-in on hover */
-.navbar-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background-color: var(--dark-green);
-  transition: width 0.25s ease;
-  border-radius: 2px;
-}
+
+
 @media (min-width: 641px) { .navbar-link:hover::after { width: 100%; } }
 
 /* "Book an appointment" pill button */
@@ -690,11 +691,9 @@ body {
   .hamburger { display: flex; }
 
   .navbar-right {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
@@ -716,9 +715,11 @@ body {
   }
 
   .navbar-link {
+    background-color: var(--dark-green);
     font-size: 1.1rem;
     font-weight: 500;
-    color: var(--dark-green);
+    color: white;
+    text-align: center;
     text-decoration: none;
     padding: 10px 16px;
     border-radius: 10px;
@@ -730,7 +731,7 @@ body {
 
   .navbar-link:hover,
   .navbar-link:active {
-    background-color: var(--dark-green);
+    background-color: var(--darker-green);
     color: #ffffff !important;
     opacity: 1 !important;
   }
