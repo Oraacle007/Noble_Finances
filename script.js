@@ -56,8 +56,18 @@
 function toggleNav() {
   var menu    = document.getElementById('navMenu');
   var btn     = document.getElementById('hamburgerBtn');
+  /* Ensure overlay exists — it is injected by setupHamburger() on DOMContentLoaded.
+     If it hasn't been created yet (e.g. very early click), inject it now so the
+     drawer always works regardless of timing. */
+  if (!document.getElementById('navOverlay')) {
+    var ov = document.createElement('div');
+    ov.className = 'nav-overlay';
+    ov.id = 'navOverlay';
+    ov.addEventListener('click', closeNav);
+    document.body.appendChild(ov);
+  }
   var overlay = document.getElementById('navOverlay');
-  if (!menu) return;
+  if (!menu || !overlay) return;
 
   var isOpen = menu.classList.contains('open');
   if (isOpen) {

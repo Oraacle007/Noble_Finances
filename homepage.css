@@ -83,10 +83,16 @@ body {
 }
 
 /* Wrapper div for the right side items (link + button) */
+/* Sits outside <nav> so position:fixed on mobile escapes stacking context.
+   On desktop we re-anchor it to the top-right to match the navbar layout. */
 .navbar-right {
-  display: flex;       /* Horizontal row layout */
-  align-items: center; /* Vertically centers items */
-  gap: 24px;           /* 24px space between each item */
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: fixed;
+  top: 18px;
+  right: 40px;
+  z-index: 200;
 }
 
 /* "Services" text link */
@@ -98,10 +104,8 @@ body {
   transition: opacity 0.2s;   /* Smooth fade on hover */
 }
 
-@media (min-width: 641px) {
-  .navbar-link:hover {
+.navbar-link:hover {
   opacity: 0.6; /* Dims the link when hovered */
-}
 }
 
 /* "Book an appointment" green pill button */
@@ -1404,7 +1408,6 @@ body {
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.hamburger.open { z-index: 600; }
 
 /* Dim overlay — sits BELOW the drawer (z-index 400) */
 .nav-overlay {
@@ -1419,12 +1422,11 @@ body {
 @media (max-width: 640px) {
   .hamburger { display: flex; }
 
+  /* On mobile the fixed element becomes a full-height slide-in drawer */
   .navbar-right {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
