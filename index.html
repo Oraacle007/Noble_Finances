@@ -30,25 +30,24 @@
        Sticky top bar: logo on left, "Services" link + "Book" button on right
        ============================================================ -->
   <nav class="navbar">
-  <!-- <nav> is a semantic HTML element for navigation bars -->
 
-    <a href="index.html" class="navbar-logo">Noble Finances</a>
-    <!-- Brand name — clicking it scrolls to the top of the page -->
+    <a href="index.html" class="navbar-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
+    </a>
 
-    <div class="navbar-right">
-    <!-- Wrapper div for the right side items -->
-
-      <a href="services.html" class="navbar-link">Services</a>
-      <!-- Anchor link — clicking scrolls to the section with id="services" -->
-
-      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
-      <!-- Opens the live chat modal to connect with a financial expert -->
-
+    <div class="navbar-right" id="navMenu">
+      <a href="services.html" class="navbar-link" onclick="closeNav()">Services</a>
+      <a href="appointment.html" class="navbar-btn" onclick="closeNav()">Book an appointment</a>
     </div>
-    <!-- End of navbar-right -->
+
+    <!-- Hamburger button — visible on mobile only -->
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
   </nav>
-  <!-- End of navbar -->
 
 
   <!-- ============================================================
@@ -476,7 +475,9 @@
        ============================================================ -->
   <footer class="footer">
 
-    <span class="footer-logo">Noble Finances</span>
+    <a href="index.html" class="footer-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="footer-logo-img" />
+    </a>
     <!-- Brand name in the left of the footer -->
 
     <div class="footer-right">

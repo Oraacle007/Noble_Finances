@@ -13,6 +13,53 @@
 
 
 /* ============================================================
+   0. HAMBURGER MENU
+   Handles mobile nav drawer open/close across all pages.
+   ============================================================ */
+(function setupHamburger() {
+  /* Inject the dim overlay div once */
+  var overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  overlay.id = 'navOverlay';
+  overlay.addEventListener('click', closeNav);
+  document.body.appendChild(overlay);
+})();
+
+function toggleNav() {
+  var menu    = document.getElementById('navMenu');
+  var btn     = document.getElementById('hamburgerBtn');
+  var overlay = document.getElementById('navOverlay');
+  if (!menu) return;
+
+  var isOpen = menu.classList.contains('open');
+  if (isOpen) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  } else {
+    menu.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeNav() {
+  var menu    = document.getElementById('navMenu');
+  var btn     = document.getElementById('hamburgerBtn');
+  var overlay = document.getElementById('navOverlay');
+  if (!menu) return;
+  menu.classList.remove('open');
+  if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+
+/* ============================================================
    1. SCROLL REVEAL
    Fades in any element with class="reveal" as it enters view.
    ============================================================ */

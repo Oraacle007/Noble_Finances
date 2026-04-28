@@ -14,11 +14,18 @@
        NAVBAR
        ============================================================ -->
   <nav class="navbar">
-    <a href="index.html" class="navbar-logo">Noble Finances</a>
-    <div class="navbar-right">
-      <a href="services.html" target="_blank" class="navbar-link">Services</a>
-      <a href="appointment.html" class="navbar-btn">Book an appointment</a>
+    <a href="index.html" class="navbar-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
+    </a>
+    <div class="navbar-right" id="navMenu">
+      <a href="services.html" target="_blank" class="navbar-link" onclick="closeNav()">Services</a>
+      <a href="appointment.html" class="navbar-btn" onclick="closeNav()">Book an appointment</a>
     </div>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
 
@@ -151,7 +158,9 @@
        FOOTER
        ============================================================ -->
   <footer class="footer">
-    <span class="footer-logo">Noble Finances</span>
+    <a href="index.html" class="footer-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="footer-logo-img" />
+    </a>
     <div class="footer-right">
       <a href="services.html" class="footer-link">Services</a>
       <a href="appointment.html" class="footer-btn">Book An Appointment</a>

@@ -14,12 +14,18 @@
        NAVBAR
        ============================================================ -->
   <nav class="navbar">
-    <a href="index.html" class="navbar-logo">Noble Finances</a>
-    <div class="navbar-right">
-      <a href="services.html" target="_blank" class="navbar-link">Services</a>
-      <!-- Triggers the booking form modal -->
-      <button class="navbar-btn" onclick="openBookingModal()">Book an appointment</button>
+    <a href="index.html" class="navbar-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
+    </a>
+    <div class="navbar-right" id="navMenu">
+      <a href="services.html" target="_blank" class="navbar-link" onclick="closeNav()">Services</a>
+      <button class="navbar-btn" onclick="closeNav(); openBookingModal()">Book an appointment</button>
     </div>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
 
@@ -69,7 +75,7 @@
       <!-- Formspree form — replace YOUR_FORM_ID with your Formspree endpoint -->
       <form
         class="booking-form"
-        action="https://formspree.io/f/mojyoekl"
+        action="https://formspree.io/f/YOUR_FORM_ID"
         method="POST"
         onsubmit="handleBookingSubmit(event)"
       >
@@ -240,7 +246,9 @@
        FOOTER
        ============================================================ -->
   <footer class="footer">
-    <span class="footer-logo">Noble Finances</span>
+    <a href="index.html" class="footer-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="footer-logo-img" />
+    </a>
     <div class="footer-right">
       <a href="services.html" class="footer-link">Services</a>
       <button class="footer-btn" onclick="openBookingModal()">Book An Appointment</button>

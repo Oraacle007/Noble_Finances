@@ -525,3 +525,116 @@ body {
     padding: 20px 24px;
   }
 }
+
+
+/* ============================================================
+   LOGO IMAGE — navbar & footer
+   ============================================================ */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.navbar-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(28%) sepia(30%) saturate(600%) hue-rotate(110deg) brightness(85%);
+  transition: opacity 0.2s ease;
+}
+.navbar-logo-img:hover { opacity: 0.75; }
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.footer-logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   HAMBURGER MENU
+   ============================================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 1001;
+}
+.hamburger:hover { background: rgba(45,74,62,0.08); }
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--dark-green, #2d4a3e);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 640px) {
+  .hamburger { display: flex; }
+
+  .navbar-right {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 75vw;
+    max-width: 300px;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 80px 32px 40px;
+    gap: 28px;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+    z-index: 1000;
+    transform: translateX(100%);
+  }
+
+  .navbar-right.open {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .navbar-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .navbar-btn {
+    width: 100%;
+    text-align: center;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+  }
+
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 999;
+  }
+  .nav-overlay.open { display: block; }
+}
