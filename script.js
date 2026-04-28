@@ -18,8 +18,7 @@
    ============================================================ */
 (function setupHamburger() {
   function injectOverlay() {
-    /* Guard: only inject once — prevents duplicate overlays when
-       a page has both an inline <script> block and script.js */
+    /* Guard: only inject once */
     if (document.getElementById('navOverlay')) return;
     var overlay = document.createElement('div');
     overlay.className = 'nav-overlay';
@@ -28,11 +27,29 @@
     document.body.appendChild(overlay);
   }
 
-  /* Run immediately if body already exists, otherwise wait for DOM */
-  if (document.body) {
+  /* All items inside the drawer are now <a> tags — they navigate
+     naturally. For anchors that also trigger a modal via onclick
+     (e.g. appointment.html's "Book an appointment"), the drawer
+     closes via the nav-overlay click or the user tapping outside.
+     No extra click binding needed; anchors handle themselves. */
+  function bindNavItemClicks() {
+    /* intentionally empty — anchors navigate on their own */
+  }
+
+  function init() {
     injectOverlay();
+    /* Bind now if DOM is ready, otherwise wait */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindNavItemClicks);
+    } else {
+      bindNavItemClicks();
+    }
+  }
+
+  if (document.body) {
+    init();
   } else {
-    document.addEventListener('DOMContentLoaded', injectOverlay);
+    document.addEventListener('DOMContentLoaded', init);
   }
 })();
 
@@ -66,7 +83,11 @@ function closeNav() {
   menu.classList.remove('open');
   if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
   if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
+  /* Only restore scrolling if no modal is currently open */
+  var anyModalOpen = document.querySelector('.modal-overlay.open');
+  if (!anyModalOpen) {
+    document.body.style.overflow = '';
+  }
 }
 
 

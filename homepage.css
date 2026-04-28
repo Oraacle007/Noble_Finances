@@ -98,8 +98,10 @@ body {
   transition: opacity 0.2s;   /* Smooth fade on hover */
 }
 
-.navbar-link:hover {
+@media (min-width: 641px) {
+  .navbar-link:hover {
   opacity: 0.6; /* Dims the link when hovered */
+}
 }
 
 /* "Book an appointment" green pill button */
@@ -1402,6 +1404,7 @@ body {
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger.open { z-index: 600; }
 
 /* Dim overlay — sits BELOW the drawer (z-index 400) */
 .nav-overlay {
@@ -1445,6 +1448,21 @@ body {
   .navbar-link {
     font-size: 1.1rem;
     font-weight: 500;
+    color: var(--dark-green);
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    display: block;
+  }
+
+  .navbar-link:hover,
+  .navbar-link:active {
+    background-color: var(--dark-green);
+    color: #ffffff !important;
+    opacity: 1 !important;
   }
 
   .navbar-btn {
@@ -1452,25 +1470,15 @@ body {
     text-align: center;
     padding: 13px 20px;
     font-size: 0.95rem;
-  }
-}
-
-
-/* ============================================================
-   MOBILE NAV DRAWER — hover styles for links and button
-   ============================================================ */
-@media (max-width: 640px) {
-  .navbar-link:hover {
-    opacity: 1;
-    background-color: var(--dark-green);
-    color: var(--white) !important;
-    border-radius: 10px;
-    padding: 8px 14px;
+    cursor: pointer;
+    display: block;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  .navbar-btn:hover {
+  .navbar-btn:hover,
+  .navbar-btn:active {
     background-color: var(--darker-green);
-    color: var(--white);
+    color: #ffffff;
   }
 }
 

@@ -18,8 +18,8 @@
       <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
     </a>
     <div class="navbar-right" id="navMenu">
-      <a href="services.html" target="_blank" class="navbar-link">Services</a>
-      <button class="navbar-btn" onclick="openBookingModal()">Book an appointment</button>
+      <a href="services.html" class="navbar-link">Services</a>
+      <a href="#" class="navbar-btn" onclick="closeNav(); openBookingModal(); return false;">Book an appointment</a>
     </div>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
       <span></span>
@@ -251,7 +251,7 @@
     </a>
     <div class="footer-right">
       <a href="services.html" class="footer-link">Services</a>
-      <button class="footer-btn" onclick="openBookingModal()">Book An Appointment</button>
+      <a href="#" class="footer-btn" onclick="openBookingModal(); return false;">Book An Appointment</a>
     </div>
   </footer>
 
