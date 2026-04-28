@@ -70,7 +70,7 @@ body {
   background-color: var(--white);  /* White navbar background */
   position: sticky;                /* Navbar sticks to the top of the screen on scroll */
   top: 0;                          /* Sticks at y=0 — the very top */
-  z-index: 999;                    /* Renders above all other content */
+  z-index: 100;
 }
 
 /* "Noble Finances" brand/logo text */
@@ -1365,7 +1365,10 @@ body {
 
 
 /* ============================================================
-   HAMBURGER MENU
+
+/* ============================================================
+   HAMBURGER MENU — Mobile nav drawer
+   z-index ladder: hamburger(600) > drawer(500) > overlay(400) > navbar(100)
    ============================================================ */
 .hamburger {
   display: none;
@@ -1381,9 +1384,11 @@ body {
   padding: 6px;
   border-radius: 8px;
   transition: background 0.2s;
-  z-index: 1001;
+  z-index: 600;
+  position: relative;
 }
-.hamburger:hover { background: rgba(45,74,62,0.08); }
+.hamburger:hover { background: rgba(45, 74, 62, 0.08); }
+
 .hamburger span {
   display: block;
   width: 22px;
@@ -1394,16 +1399,28 @@ body {
   transform-origin: center;
 }
 
-/* Animated X when open */
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Dim overlay — sits BELOW the drawer (z-index 400) */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 400;
+}
+.nav-overlay.open { display: block; }
 
 @media (max-width: 640px) {
   .hamburger { display: flex; }
 
   .navbar-right {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     position: fixed;
     top: 0;
     right: 0;
@@ -1411,20 +1428,18 @@ body {
     width: 75vw;
     max-width: 300px;
     background-color: #fff;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     padding: 80px 32px 40px;
     gap: 28px;
-    box-shadow: -8px 0 40px rgba(0,0,0,0.12);
-    z-index: 1000;
-    transition: transform 0.3s ease;
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+    z-index: 500;
     transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    visibility: hidden;
   }
 
   .navbar-right.open {
-    display: flex;
     transform: translateX(0);
+    visibility: visible;
   }
 
   .navbar-link {
@@ -1438,14 +1453,24 @@ body {
     padding: 13px 20px;
     font-size: 0.95rem;
   }
-
-  /* Dim overlay behind the drawer */
-  .nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    z-index: 999;
-  }
-  .nav-overlay.open { display: block; }
 }
+
+
+/* ============================================================
+   MOBILE NAV DRAWER — hover styles for links and button
+   ============================================================ */
+@media (max-width: 640px) {
+  .navbar-link:hover {
+    opacity: 1;
+    background-color: var(--dark-green);
+    color: var(--white) !important;
+    border-radius: 10px;
+    padding: 8px 14px;
+  }
+
+  .navbar-btn:hover {
+    background-color: var(--darker-green);
+    color: var(--white);
+  }
+}
+

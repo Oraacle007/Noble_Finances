@@ -65,16 +65,24 @@ body {
   background-color: var(--white);  /* White background */
   position: sticky;                /* Sticks to top of viewport on scroll */
   top: 0;                          /* Sticks at very top */
-  z-index: 999;                    /* Always above other content */
+  z-index: 100;
 }
 
-/* "Noble Finances" brand name */
+/* Navbar logo — now an image */
 .navbar-logo {
-  font-family: var(--font-body); /* DM Sans */
-  font-size: 0.9rem;             /* Small — matches Figma */
-  font-weight: 500;              /* Medium weight */
-  color: var(--text-black);      /* Dark text */
-  text-decoration: none;         /* No underline */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.navbar-logo:hover { opacity: 0.75; }
+
+.navbar-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  /* Tint logo to dark green to match white navbar */
+  filter: brightness(0) saturate(100%) invert(28%) sepia(30%) saturate(600%) hue-rotate(110deg) brightness(85%);
 }
 
 /* Right side wrapper */
@@ -90,30 +98,46 @@ body {
   font-weight: 400;          /* Normal */
   color: var(--text-black);  /* Dark */
   text-decoration: none;     /* No underline */
-  transition: opacity 0.2s;  /* Smooth fade on hover */
+  transition: opacity 0.2s, color 0.2s;
+  position: relative;
 }
 
-.navbar-link:hover {
-  opacity: 0.6; /* Dims on hover */
+.navbar-link:hover { opacity: 0.7; color: var(--dark-green); }
+
+/* Subtle underline slide-in on hover */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--dark-green);
+  transition: width 0.25s ease;
+  border-radius: 2px;
 }
+.navbar-link:hover::after { width: 100%; }
 
 /* "Book an appointment" pill button */
 .navbar-btn {
-  background-color: var(--dark-green); /* Dark green */
-  color: var(--white);                 /* White text */
-  font-family: var(--font-body);       /* Body font */
-  font-size: 0.82rem;                  /* Small */
-  font-weight: 500;                    /* Medium bold */
-  padding: 9px 18px;                   /* Inner spacing */
-  border: none;                        /* No border */
-  border-radius: var(--radius-pill);   /* Pill shape */
-  cursor: pointer;                     /* Hand cursor */
-  text-decoration: none;               /* No underline */
-  transition: background 0.2s ease;    /* Smooth hover */
+  background-color: var(--dark-green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 9px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .navbar-btn:hover {
-  background-color: var(--darker-green); /* Darker on hover */
+  background-color: var(--darker-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 74, 62, 0.25);
 }
 
 
@@ -444,12 +468,21 @@ body {
   align-items: center;                 /* Vertically centered */
 }
 
-/* "Noble Finances" in the footer */
+/* Footer logo — image */
 .footer-logo {
-  font-family: var(--font-body); /* Body font */
-  font-size: 0.88rem;            /* Small */
-  font-weight: 500;              /* Medium */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
+.footer-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.footer-logo:hover .footer-logo-img { opacity: 1; }
 
 /* Right side items wrapper */
 .footer-right {
@@ -600,3 +633,114 @@ body {
     text-align: center;
   }
 }
+
+
+
+/* ============================================================
+   HAMBURGER MENU — Mobile nav drawer
+   z-index ladder: hamburger(600) > drawer(500) > overlay(400) > navbar(100)
+   ============================================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 600;
+  position: relative;
+}
+.hamburger:hover { background: rgba(45, 74, 62, 0.08); }
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--dark-green, #2d4a3e);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Dim overlay — sits BELOW the drawer (z-index 400) */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 400;
+}
+.nav-overlay.open { display: block; }
+
+@media (max-width: 640px) {
+  .hamburger { display: flex; }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 75vw;
+    max-width: 300px;
+    background-color: #fff;
+    padding: 80px 32px 40px;
+    gap: 28px;
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+    z-index: 500;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    visibility: hidden;
+  }
+
+  .navbar-right.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .navbar-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .navbar-btn {
+    width: 100%;
+    text-align: center;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ============================================================
+   MOBILE NAV DRAWER — hover styles for links and button
+   ============================================================ */
+@media (max-width: 640px) {
+  .navbar-link:hover {
+    opacity: 1;
+    background-color: var(--dark-green);
+    color: var(--white) !important;
+    border-radius: 10px;
+    padding: 8px 14px;
+  }
+
+  .navbar-btn:hover {
+    background-color: var(--darker-green);
+    color: var(--white);
+  }
+}
+

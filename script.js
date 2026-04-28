@@ -17,12 +17,23 @@
    Handles mobile nav drawer open/close across all pages.
    ============================================================ */
 (function setupHamburger() {
-  /* Inject the dim overlay div once */
-  var overlay = document.createElement('div');
-  overlay.className = 'nav-overlay';
-  overlay.id = 'navOverlay';
-  overlay.addEventListener('click', closeNav);
-  document.body.appendChild(overlay);
+  function injectOverlay() {
+    /* Guard: only inject once — prevents duplicate overlays when
+       a page has both an inline <script> block and script.js */
+    if (document.getElementById('navOverlay')) return;
+    var overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    overlay.id = 'navOverlay';
+    overlay.addEventListener('click', closeNav);
+    document.body.appendChild(overlay);
+  }
+
+  /* Run immediately if body already exists, otherwise wait for DOM */
+  if (document.body) {
+    injectOverlay();
+  } else {
+    document.addEventListener('DOMContentLoaded', injectOverlay);
+  }
 })();
 
 function toggleNav() {

@@ -30,27 +30,23 @@
        Same visual appearance as index.html — sticky top bar
        ============================================================ -->
   <nav class="navbar">
-  <!-- Semantic <nav> element for navigation -->
 
     <a href="index.html" class="navbar-logo">
-       <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
+      <img src="noblee finance logo.png" alt="Noble Finances" class="navbar-logo-img" />
     </a>
-    <!-- Logo links back to the landing page -->
 
-    <div class="navbar-right">
-    <!-- Wrapper for right-side nav items -->
-
+    <div class="navbar-right" id="navMenu">
       <a href="services.html" class="navbar-link">Services</a>
-      <!-- Current page link -->
-
       <a href="appointment.html" class="navbar-btn">Book an appointment</a>
-      <!-- CTA button — scrolls to the goodbye/appointment section -->
-
     </div>
-    <!-- End navbar-right -->
+
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
   </nav>
-  <!-- End navbar -->
 
 
   <!-- ============================================================
@@ -352,7 +348,9 @@
        ============================================================ -->
   <footer class="footer">
 
-    <span class="footer-logo">Noble Finances</span>
+    <a href="index.html" class="footer-logo">
+      <img src="noblee finance logo.png" alt="Noble Finances" class="footer-logo-img" />
+    </a>
     <!-- Brand name on the left -->
 
     <div class="footer-right">
