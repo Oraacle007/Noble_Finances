@@ -604,12 +604,16 @@ input[type="date"].form-input {
 }
 
 .footer-link {
-  color: rgba(255,255,255,0.75);
+  color: var(--white);
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.2s;
+  background-color: #FFFFFF26;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
 }
-.footer-link:hover { color: var(--white); }
+.footer-link:hover { 
+  background-color: rgba(255,255,255,0.25); }
 
 .footer-btn {
   background-color: rgba(255,255,255,0.12);
@@ -827,12 +831,13 @@ input[type="date"].form-input {
   }
 
   .navbar-link {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    color: var(--dark-green);
+    color: var(--white);
+    text-align: center;
     text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 10px;
+    padding: 13px 20px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     width: 100%;
@@ -841,9 +846,8 @@ input[type="date"].form-input {
 
   .navbar-link:hover,
   .navbar-link:active {
-    background-color: var(--dark-green);
+    background-color: var(--darker-green);
     color: #ffffff !important;
-    opacity: 1 !important;
   }
 
   .navbar-btn {

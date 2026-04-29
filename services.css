@@ -496,14 +496,17 @@ body {
 
 /* Footer text links */
 .footer-link {
-  color: rgba(255,255,255,0.75); /* Semi-transparent white */
+  color: var(--white); /* white-text */
   text-decoration: none;         /* No underline */
   font-size: 0.8rem;             /* Small */
   transition: color 0.2s;       /* Smooth hover */
+  background-color: #FFFFFF26;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
 }
 
 .footer-link:hover {
-  color: var(--white); /* Full white on hover */
+  background-color: rgba(255,255,255,0.25);
 }
 
 /* "Book an Appointment" transparent button */
@@ -716,13 +719,13 @@ body {
 
   .navbar-link {
     background-color: var(--dark-green);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: white;
     text-align: center;
     text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 10px;
+    padding: 13px 20px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     width: 100%;
@@ -743,6 +746,7 @@ body {
     font-size: 0.95rem;
     cursor: pointer;
     display: block;
+    border-radius: var(--radius-pill);
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
