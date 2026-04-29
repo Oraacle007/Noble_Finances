@@ -648,12 +648,13 @@ body {
   }
 
   .navbar-link {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    color: var(--dark-green);
+    color: var(--white);
+    text-align: center;
     text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 10px;
+    padding: 13px 20px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     width: 100%;
@@ -662,9 +663,9 @@ body {
 
   .navbar-link:hover,
   .navbar-link:active {
-    background-color: var(--dark-green);
+    background-color: var(--darker-green);
     color: #ffffff !important;
-    opacity: 1 !important;
+    
   }
 
   .navbar-btn {
