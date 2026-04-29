@@ -448,8 +448,15 @@ body {
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.2s;
+  padding: 9px 18px;
+  background-color: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-pill)
 }
-.footer-link:hover { color: var(--white); }
+.footer-link:hover { 
+  color: var(--white);
+  background-color: rgba(255,255,255,0.22); 
+ }
 
 .footer-btn {
   background-color: rgba(255,255,255,0.12);
@@ -464,7 +471,9 @@ body {
   text-decoration: none;
   transition: background 0.2s;
 }
-.footer-btn:hover { background-color: rgba(255,255,255,0.22); }
+.footer-btn:hover { 
+  background-color: rgba(255,255,255,0.22); 
+}
 
 .footer-spacer {
   height: 100px;
